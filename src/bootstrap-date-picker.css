@@ -28,6 +28,7 @@ button.border-0.mt-date-picker-bg-primary{transition: .3s}
 .mt-date-picker-day-item.mt-date-picker-selected {background-color: var(--mt-date-picker-secondary);}
 .mt-date-picker-squar-size {width: 30px;height: 30px;}
 .mt-date-picker-bg-primary {background-color: var(--mt-date-picker-primary);}
+.mt-date-picker, .mt-date-picker-toggler {font-family: Poppins, sans-serif !important;}
 
 .mt-date-picker {
     left: 0;
