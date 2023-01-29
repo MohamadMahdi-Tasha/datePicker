@@ -6,10 +6,15 @@ const datePickerDayItem = document.querySelectorAll('.mt-date-picker-main-side-g
 const datePickerCurrentMonth = document.querySelector('.mt-date-picker-current-month');
 const datePickerCurrentYear = document.querySelector('.mt-date-picker-current-year');
 const datePickerDayItemsAndNotDisabledOnes = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary)');
+const datePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
+const datePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn-btn');
 
 const today = new Date();
 
 buttonsInDataPicker.forEach(button => button.setAttribute('tabindex', '-1'))
+datePickerCurrentMonth.textContent = today.toLocaleString('default', { month: 'long' });
+datePickerCurrentYear.textContent = today.getFullYear();
+datePickerDayItemsAndNotDisabledOnes[today.getDate() - 1].classList.add('mt-date-picker-today');
 
 datePickerDayItem.forEach(item => {
     item.addEventListener('click', () => {
@@ -32,6 +37,10 @@ datePickerToggler.forEach(toggler => {
     })
 })
 
-datePickerCurrentMonth.textContent = today.toLocaleString('default', { month: 'long' });
-datePickerCurrentYear.textContent = today.getFullYear();
-datePickerDayItemsAndNotDisabledOnes[today.getDate() - 1].classList.add('mt-date-picker-today');
+
+datePickerCancelBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const dataPickerHolder = btn.parentElement.parentElement.parentElement;
+        dataPickerHolder.removeAttribute('data-opened')
+    })
+})
