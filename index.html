@@ -28,7 +28,7 @@
 <body class="min-vh-100 d-flex align-items-center justify-content-center">
 
 <!--Date Picker Holder-->
-<div role="date-picker-holder" class="mt-date-picker-holder position-relative" data-selcted-date="unset">
+<div role="date-picker-holder" class="mt-date-picker-holder position-relative" data-selected-date="unset">
     <!--Date Picker Toggler-->
     <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
     <!--Date Picker-->
@@ -40,8 +40,8 @@
                 <button class="mt-date-picker-fs-14px mt-date-picker-squar-size mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary bg-white d-flex align-items-center justify-content-center rounded-3">&#60;</button>
             </div>
             <button class="text-nowrap mx-3 border-0 bg-white mt-date-picker-fs-14px">
-                <span class="mt-date-picker-current-month">February</span>
-                <span class="mt-date-picker-current-year">2022</span>
+                <span class="mt-date-picker-current-month"></span>
+                <span class="mt-date-picker-current-year"></span>
             </button>
             <div class="d-flex">
                 <button class="mt-date-picker-fs-14px me-2 mt-date-picker-squar-size mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary bg-white d-flex align-items-center justify-content-center rounded-3">&#187;</button>
@@ -51,16 +51,15 @@
         <!--Main Side (Days Part)-->
         <div class="mb-3 mt-date-picker-main-side-grid">
             <!--Weekdays Names-->
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Su</span>
             <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Mo</span>
             <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">TU</span>
             <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">We</span>
             <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Th</span>
             <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Fr</span>
             <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Sa</span>
-            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Su</span>
 
             <!--Days-->
-            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">30</button>
             <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">1</button>
             <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">2</button>
             <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">3</button>
@@ -92,9 +91,6 @@
             <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">29</button>
             <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">30</button>
             <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">31</button>
-            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">1</button>
-            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">2</button>
-            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">3</button>
         </div>
         <!--Bottom Side (Active Or Cancel)-->
         <div class="d-flex">
