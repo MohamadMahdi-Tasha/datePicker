@@ -36,6 +36,7 @@ button.border-0.mt-date-picker-bg-primary{transition: .3s}
     transition-property: all;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
     transition-duration: .2s;
+    width: 320px;
 }
 
 .mt-date-picker-main-side-grid {
