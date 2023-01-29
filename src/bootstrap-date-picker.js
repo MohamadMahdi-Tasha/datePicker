@@ -16,6 +16,13 @@ datePickerCurrentMonth.textContent = today.toLocaleString('default', { month: 'l
 datePickerCurrentYear.textContent = today.getFullYear();
 datePickerDayItemsAndNotDisabledOnes[today.getDate() - 1].classList.add('mt-date-picker-today');
 
+window.addEventListener('keydown', (event) => {
+    const clickedKey = event.key.toLowerCase();
+    const openedDatePickerHolders = document.querySelectorAll('.mt-date-picker-holder[data-opened]');
+
+    if (clickedKey === 'escape') {openedDatePickerHolders.forEach(holder => holder.removeAttribute('data-opened'))}
+})
+
 datePickerDayItem.forEach(item => {
     item.addEventListener('click', () => {
         const selectedDayItem = document.querySelector('.mt-date-picker-main-side-grid .mt-date-picker-day-item.mt-date-picker-selected');
@@ -36,7 +43,6 @@ datePickerToggler.forEach(toggler => {
 
     })
 })
-
 
 datePickerCancelBtn.forEach(btn => {
     btn.addEventListener('click', () => {
