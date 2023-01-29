@@ -44,3 +44,14 @@ mtDatePickerDayItemWithoutTodayAndSelected.forEach(item => {
 })
 
 mtDatePickerCancelBtn.forEach(btn => btn.addEventListener('click', () => btn.parentElement.parentElement.parentElement.removeAttribute('data-opened')))
+
+mtDatePickerApplyBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const datePickerHolderOfClickedBtn = btn.parentElement.parentElement.parentElement;
+
+        datePickerHolderOfClickedBtn.removeAttribute('data-opened');
+        datePickerHolderOfClickedBtn.setAttribute('data-selected-day', datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-selected').textContent);
+        datePickerHolderOfClickedBtn.setAttribute('data-selected-month', datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-current-month').textContent);
+        datePickerHolderOfClickedBtn.setAttribute('data-selected-year', datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-current-year').textContent);
+    })
+})
