@@ -17,11 +17,7 @@ datePickerCurrentMonth.textContent = nameOfCurrentMonth;
 datePickerCurrentYear.textContent = today.getFullYear();
 datePickerDayItemsAndNotDisabledOnes[today.getDate() - 1].classList.add('mt-date-picker-today');
 
-if (nameOfCurrentMonth === 'April' ||
-    nameOfCurrentMonth === 'June' ||
-    nameOfCurrentMonth === 'September' ||
-    nameOfCurrentMonth === 'November')
-{
+if (nameOfCurrentMonth === 'April' || nameOfCurrentMonth === 'June' || nameOfCurrentMonth === 'September' || nameOfCurrentMonth === 'November') {
     const thirtyOneDayOfMonthItem = document.querySelector('.mt-date-picker-day-item:nth-of-type(31)');
     thirtyOneDayOfMonthItem.remove();
 }
