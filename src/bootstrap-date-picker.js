@@ -13,12 +13,19 @@ mtDatePickerToggler.forEach(toggler => {
 
         parentOfToggler.toggleAttribute('data-opened');
 
-        if (openedDatePickerHolder !== null) {
-            openedDatePickerHolder.removeAttribute('data-opened');
-        }
+        if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
 
         (parentOfToggler.getAttribute('data-opened') === null)
             ? allMtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
             : allMtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '1'))
+    })
+})
+
+mtDatePickerDayItemWithoutTodayAndSelected.forEach(item => {
+    item.addEventListener('click', () => {
+        const selectedItemsInParentOfClickedItem = item.parentElement.querySelector('.mt-date-picker-selected');
+
+        item.classList.add('mt-date-picker-selected');
+        if (selectedItemsInParentOfClickedItem !== null) {selectedItemsInParentOfClickedItem.classList.remove('mt-date-picker-selected')}
     })
 })
