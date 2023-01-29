@@ -2,6 +2,7 @@
 /*Variables*/
 :root {
     --mt-date-picker-primary: #3069fe;
+    --mt-date-picker-darker-primary: #2554ce;
     --mt-date-picker-secondary: #e6e6e6;
     --mt-date-picker-darker-secondary: #868686;
     --mt-date-picker-shadow: 0 5px 10px rgba(0,0,0,.1);
@@ -19,16 +20,23 @@ body:last-child {margin-bottom: 500vh;}
 .mt-date-picker-fs-14px {font-size: 14px;}
 .mt-date-picker-fs-12px {font-size: 12px;}
 .mt-date-picker-today {background-color: #fff;}
+.mt-date-picker-day-item,
+button.bg-white.mt-date-picker-border-1px-solid-secondary,
+button.border-0.mt-date-picker-bg-primary {transition: .3s}
 .mt-date-picker-day-item:not(.mt-date-picker-today) {background-color: white;color: #000;}
 .mt-date-picker-day-item.mt-date-picker-today {background-color: var(--mt-date-picker-primary);color: #fff;}
 .mt-date-picker-day-item.mt-date-picker-selected {background-color: var(--mt-date-picker-secondary);}
 .mt-date-picker {left: 0;transform: translateX(-10%);}
 .mt-date-picker-squar-size {width: 30px;height: 30px;}
 .mt-date-picker-bg-primary {background-color: var(--mt-date-picker-primary);}
-
 .mt-date-picker-main-side-grid {
     display: grid;
     column-gap: 8px;
     row-gap: 15px;
     grid-template-columns: repeat(7, 1fr);
 }
+
+/*Hover And Active, ...*/
+.mt-date-picker-day-item:not(.mt-date-picker-today):hover {background-color: var(--mt-date-picker-secondary);}
+button.bg-white.mt-date-picker-border-1px-solid-secondary:hover {background-color: var(--mt-date-picker-secondary) !important;}
+button.border-0.mt-date-picker-bg-primary:hover {background-color: var(--mt-date-picker-darker-primary) !important;}
