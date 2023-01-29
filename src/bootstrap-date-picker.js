@@ -10,11 +10,21 @@ const datePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-bt
 const datePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
 
 const today = new Date();
+const nameOfCurrentMonth = today.toLocaleString('default', { month: 'long' })
 
 buttonsInDataPicker.forEach(button => button.setAttribute('tabindex', '-1'))
-datePickerCurrentMonth.textContent = today.toLocaleString('default', { month: 'long' });
+datePickerCurrentMonth.textContent = nameOfCurrentMonth;
 datePickerCurrentYear.textContent = today.getFullYear();
 datePickerDayItemsAndNotDisabledOnes[today.getDate() - 1].classList.add('mt-date-picker-today');
+
+if (nameOfCurrentMonth === 'April' ||
+    nameOfCurrentMonth === 'June' ||
+    nameOfCurrentMonth === 'September' ||
+    nameOfCurrentMonth === 'November')
+{
+    const thirtyOneDayOfMonthItem = document.querySelector('.mt-date-picker-day-item:nth-of-type(31)');
+    thirtyOneDayOfMonthItem.remove();
+}
 
 window.addEventListener('keydown', (event) => {
     const clickedKey = event.key.toLowerCase();
