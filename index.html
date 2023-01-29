@@ -11,19 +11,95 @@
     <!--A Meta Tag For Seo-->
     <meta name="description" content="Date Picker Made By Mahdi Tasha With Bootstrap">
     <!--A Meta Tag For Keywords (Seo)-->
-    <meta name="keyword" content="bootstrap,js,css,date,picker,datepicker,date picker,html,code,frontend, github, library">
+    <meta name="keyword" content="bootstrap,js,css,date,picker,datepicker,web components,web,component,date picker,html,code,frontend,github,library">
     <!--Theme Color Of Page-->
     <meta name="theme-color" content="#3069fe">
     <!--Icon Of Page-->
     <link rel="icon" href="assets/base/img/img-logo.svg" type="image/x-icon">
     <!--Css Linking-->
     <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="src/bootstrap-date-picker.css">
     <!--Title Of Page-->
-    <title>Bootstrap Date Picker Made By Mahdi Tasha</title>
+    <title>Bootstrap Date Picker (Web Component) &#128293; Made By Mahdi Tasha &#10004;&#65039;</title>
 </head>
-<body>
+<body class="min-vh-100 min-vw-100 d-flex align-items-center justify-content-center">
 
-<button></button>
+<!--Date Picker Holder-->
+<div class="mt-date-picker-holder position-relative">
+    <!--Date Picker Toggler-->
+    <button class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
+    <!--Date Picker-->
+    <div class="bg-white mt-date-picker mt-3 mt-date-picker-border-1px-solid-secondary mt-date-picker-shadow rounded-4 position-absolute p-3">
+        <!--Top Side Of Date Picker-->
+        <div class="d-flex mb-3">
+            <div class="d-flex">
+                <button class="mt-date-picker-fs-14px me-2 mt-date-picker-squar-size mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary bg-white d-flex align-items-center justify-content-center rounded-3">&#171;</button>
+                <button class="mt-date-picker-fs-14px mt-date-picker-squar-size mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary bg-white d-flex align-items-center justify-content-center rounded-3">&#60;</button>
+            </div>
+            <button class="text-nowrap mx-3 border-0 bg-white mt-date-picker-fs-14px">
+                <span>February</span>
+                <span>2022</span>
+            </button>
+            <div class="d-flex">
+                <button class="mt-date-picker-fs-14px me-2 mt-date-picker-squar-size mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary bg-white d-flex align-items-center justify-content-center rounded-3">&#187;</button>
+                <button class="mt-date-picker-fs-14px mt-date-picker-squar-size mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary bg-white d-flex align-items-center justify-content-center rounded-3">&#62;</button>
+            </div>
+        </div>
+        <!--Main Side (Days Part)-->
+        <div class="mb-3 mt-date-picker-main-side-grid">
+            <!--Weekdays Names-->
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Mo</span>
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">TU</span>
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">We</span>
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Th</span>
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Fr</span>
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Sa</span>
+            <span class="text-center mt-date-picker-text-secondary mt-date-picker-fs-14px">Su</span>
+
+            <!--Days-->
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">30</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">1</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">2</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">3</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">4</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">5</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">6</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">7</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">8</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-selected">9</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">10</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-today">11</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">12</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">13</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">14</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">15</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">16</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">17</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">18</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">19</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">20</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">21</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">22</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">23</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">24</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">25</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">26</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">27</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">28</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">29</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">30</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">31</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">1</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">2</button>
+            <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item mt-date-picker-text-secondary">3</button>
+        </div>
+        <!--Bottom Side (Active Or Cancle)-->
+        <div class="d-flex">
+            <button class="me-2 mt-date-picker-border-1px-solid-secondary rounded-3 w-50 py-2 px-3 bg-white mt-date-picker-fs-16px">Cancel</button>
+            <button class="border-0 w-50 rounded-3 text-white py-2 px-3 mt-date-picker-bg-primary mt-date-picker-fs-16px">Apply</button>
+        </div>
+    </div>
+</div>
 
 <script src="assets/plugins/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
