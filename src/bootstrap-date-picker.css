@@ -39,12 +39,10 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-month-main-side-grid {grid-template-columns: repeat(3, 1fr);}
 .mt-date-picker-main:not(.mt-date-picker-main-showing) {height: 0;opacity: 0;}
 .mt-date-picker-main.mt-date-picker-main-showing {opacity: 1;}
-.mt-date-picker-day-main.mt-date-picker-main-showing {height: 292px;}
+.mt-date-picker-day-main.mt-date-picker-main-showing {height: 286px;}
 .mt-date-picker-month-main.mt-date-picker-main-showing {height: 244px;}
 .mt-date-picker-year-main.mt-date-picker-main-showing {height: 251px;}
 .mt-date-picker {width: 320px;}
-
-.mt-date-picker,
 .mt-date-picker-main{
     left: 0;
     transition-property: all;
@@ -62,13 +60,13 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-holder:not([data-opened]) > .mt-date-picker {
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-10px) translateX(-10%);
+    transform: translateY(-10px);
 }
 
 .mt-date-picker-holder[data-opened] > .mt-date-picker {
     opacity: 1;
     pointer-events: visible;
-    transform: translateY(0) translateX(-10%);
+    transform: translateY(0);
 }
 
 /*Hover And Active, ...*/

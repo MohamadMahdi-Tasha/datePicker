@@ -1,22 +1,20 @@
 // Codes By Mahdi Tasha
 const mtDatePickerToggler = document.querySelectorAll('.mt-date-picker-toggler');
 const mtDatePickerDayItem = document.querySelectorAll('.mt-date-picker-day-item');
-const mtDatePickerDayItemWithoutTodayAndSelected = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-selected)');
-const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
-const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
+const mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-selected, .mt-date-picker-text-secondary)');
 const mtDatePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
 const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
 const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
 const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
+const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev-month-btn');
+const mtDatePickerPrevDayBtn = document.querySelectorAll('.mt-date-picker-prev-day-btn');
+const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
+const mtDatePickerNextDayBtn = document.querySelectorAll('.mt-date-picker-next-day-btn');
 
 const todayDate = new Date();
 const thisYear = todayDate.getFullYear();
 const today = todayDate.getDate();
 const thisMonthName = todayDate.toLocaleString('default', { month: 'long' })
-
-mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
-mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
-document.querySelectorAll(`.mt-date-picker-day-item:nth-of-type(${today})`).forEach(item => item.classList.add('mt-date-picker-today'))
 
 mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
 
@@ -36,7 +34,7 @@ mtDatePickerToggler.forEach(toggler => {
     })
 })
 
-mtDatePickerDayItemWithoutTodayAndSelected.forEach(item => {
+mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes.forEach(item => {
     item.addEventListener('click', () => {
         const selectedItemsInParentOfClickedItem = item.parentElement.querySelector('.mt-date-picker-selected');
 
@@ -54,9 +52,9 @@ mtDatePickerApplyBtn.forEach(btn => {
 
         if (selectedDay !== null) {
             datePickerHolderOfClickedBtn.removeAttribute('data-opened');
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-day', selectedDay.textContent);
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-month', datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-current-month').textContent);
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-year', datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-current-year').textContent);
+            // datePickerHolderOfClickedBtn.setAttribute('data-selected-day', selectedDay.textContent);
+            // datePickerHolderOfClickedBtn.setAttribute('data-selected-month', datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-current-month').textContent);
+            // datePickerHolderOfClickedBtn.setAttribute('data-selected-year', datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-current-year').textContent);
         }
     })
 })
