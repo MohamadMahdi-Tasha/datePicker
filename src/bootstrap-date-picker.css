@@ -45,7 +45,6 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker {width: 320px;}
 .mt-date-picker-day-month-main-holder {height: 210px;}
 .mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid {width: calc(320px - 2rem);top: 0;transition: .3s}
-
 .mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid.mt-date-picker-day-month-main-active {left: 0;}
 .mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid:not(.mt-date-picker-day-month-main-active) {left: 310px;}
 

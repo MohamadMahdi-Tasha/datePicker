@@ -15,6 +15,7 @@ const todayDate = new Date();
 const thisYear = todayDate.getFullYear();
 const today = todayDate.getDate();
 const thisMonthName = todayDate.toLocaleString('default', { month: 'long' })
+let monthToSet;
 
 mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
 
@@ -76,5 +77,20 @@ mtYearSelectBtn.forEach(btn => {
 
         mtDatePickerYearMain.classList.add('mt-date-picker-main-showing')
         mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
+    })
+})
+
+mtDatePickerNextMonthBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
+        const nextMonth = mtDatePickerDayMonthMainActive.nextElementSibling;
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        if (nextMonth !== null) {
+            nextMonth.classList.add('mt-date-picker-day-month-main-active');
+            mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+
+            monthToSet = monthNames[Array.prototype.slice.call(nextMonth.parentElement.children).indexOf(nextMonth)], nextMonth.classList
+        }
     })
 })
