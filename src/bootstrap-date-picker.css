@@ -25,11 +25,13 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-fs-12px {font-size: 12px;}
 .mt-date-picker-today {background-color: #fff;}
 .mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-text-secondary),
-.mt-date-picker-month-item:not(.mt-date-picker-month-item-current){background-color: #fff;color: #000;}
+.mt-date-picker-month-item:not(.mt-date-picker-month-item-current),
+.mt-date-picker-year-item:not(.mt-date-picker-year-item-current){background-color: #fff;color: #000;}
 .mt-date-picker-day-item.mt-date-picker-text-secondary {background-color: #fff;}
 .mt-date-picker-day-item.mt-date-picker-today,
-.mt-date-picker-month-item.mt-date-picker-month-item-current {background-color: var(--mt-date-picker-primary);color: #fff;}
-.mt-date-picker-day-item.mt-date-picker-selected {background-color: var(--mt-date-picker-secondary);}
+.mt-date-picker-month-item.mt-date-picker-month-item-current,
+.mt-date-picker-year-item.mt-date-picker-year-item-current {background-color: var(--mt-date-picker-primary);color: #fff;}
+.mt-date-picker-day-item.mt-date-picker-selected{background-color: var(--mt-date-picker-secondary);}
 .mt-date-picker-squar-size {width: 30px;height: 30px;}
 .mt-date-picker-bg-primary {background-color: var(--mt-date-picker-primary);}
 .mt-date-picker, .mt-date-picker-toggler {font-family: Poppins, sans-serif !important;}
@@ -65,6 +67,7 @@ button.border-0.mt-date-picker-bg-primary,
 
 /*Hover And Active, ...*/
 .mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-text-secondary):hover,
-.mt-date-picker-month-item:not(.mt-date-picker-month-item-current):hover {background-color: var(--mt-date-picker-secondary);}
+.mt-date-picker-month-item:not(.mt-date-picker-month-item-current):hover,
+.mt-date-picker-year-item:not(.mt-date-picker-year-item-current):hover {background-color: var(--mt-date-picker-secondary);}
 button.bg-white.mt-date-picker-border-1px-solid-secondary:hover {background-color: var(--mt-date-picker-secondary) !important;}
 button.border-0.mt-date-picker-bg-primary:hover {background-color: var(--mt-date-picker-darker-primary) !important;}
