@@ -38,8 +38,10 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker, .mt-date-picker-toggler {font-family: Poppins, sans-serif !important;}
 .mt-date-picker-day-main-side-grid {grid-template-columns: repeat(7, 1fr);}
 .mt-date-picker-month-main-side-grid {grid-template-columns: repeat(3, 1fr);}
-.mt-date-picker-main:not(.mt-date-picker-main-showing) {height: 0;}
-.mt-date-picker-main.mt-date-picker-main-showing {height: 100%;}
+.mt-date-picker-day-main.mt-date-picker-main-showing {height: 290px;}
+.mt-date-picker-main:not(.mt-date-picker-main-showing) {height: 0;opacity: 0;}
+.mt-date-picker-main.mt-date-picker-main-showing {opacity: 1;}
+:is(.mt-date-picker-month-main, .mt-date-picker-year-main).mt-date-picker-main-showing {height: 244px;}
 
 .mt-date-picker {
     left: 0;
