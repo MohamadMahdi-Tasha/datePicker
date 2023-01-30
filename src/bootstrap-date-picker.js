@@ -28,10 +28,6 @@ mtDatePickerToggler.forEach(toggler => {
         parentOfToggler.toggleAttribute('data-opened');
 
         if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
-
-        (parentOfToggler.getAttribute('data-opened') === null)
-            ? allMtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
-            : allMtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '1'))
     })
 })
 
@@ -114,14 +110,14 @@ mtDatePickerPrevDayBtn.forEach(btn => {
     btn.addEventListener('click', () => {
         const selectedDay = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
 
-        if (selectedDay !== null) {
-            const prevOfSelectedDay = selectedDay.previousElementSibling;
-
-            selectedDay.classList.remove('mt-date-picker-selected');
-            prevOfSelectedDay.classList.add('mt-date-picker-selected');
+        if (selectedDay === null) {
+            const firstDayOfActiveMonth = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active .mt-date-picker-day-item:not(.mt-date-picker-selected, .mt-date-picker-today, .mt-date-picker-text-secondary):first-of-type')
+            firstDayOfActiveMonth.classList.add('mt-date-picker-selected')
         } else {
-            const firstDayItem = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid.mt-date-picker-day-month-main-active .mt-date-picker-day-item');
-            firstDayItem.classList.add('mt-date-picker-selected')
+            const prevDayOfSelectedselectedDayDay = selectedDay.previousElementSibling;
+
+            prevDayOfSelectedselectedDayDay.classList.add('mt-date-picker-selected');
+            selectedDay.classList.remove('mt-date-picker-selected');
         }
     })
 })
