@@ -90,7 +90,22 @@ mtDatePickerNextMonthBtn.forEach(btn => {
             nextMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
 
-            monthToSet = monthNames[Array.prototype.slice.call(nextMonth.parentElement.children).indexOf(nextMonth)], nextMonth.classList
+            monthToSet = monthNames[Array.prototype.slice.call(nextMonth.parentElement.children).indexOf(nextMonth)]
+        }
+    })
+})
+
+mtDatePickerPrevMonthBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
+        const nextMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        if (nextMonth !== null) {
+            nextMonth.classList.add('mt-date-picker-day-month-main-active');
+            mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+
+            monthToSet = monthNames[Array.prototype.slice.call(nextMonth.parentElement.children).indexOf(nextMonth)]
         }
     })
 })
