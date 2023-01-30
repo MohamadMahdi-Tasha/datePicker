@@ -116,8 +116,28 @@ mtDatePickerPrevDayBtn.forEach(btn => {
         } else {
             const prevDayOfSelectedselectedDayDay = selectedDay.previousElementSibling;
 
-            prevDayOfSelectedselectedDayDay.classList.add('mt-date-picker-selected');
-            selectedDay.classList.remove('mt-date-picker-selected');
+            if (!prevDayOfSelectedselectedDayDay.classList.contains('mt-date-picker-text-secondary')) {
+                prevDayOfSelectedselectedDayDay.classList.add('mt-date-picker-selected');
+                selectedDay.classList.remove('mt-date-picker-selected');
+            }
+        }
+    })
+})
+
+mtDatePickerNextDayBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const selectedDay = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
+
+        if (selectedDay === null) {
+            const firstDayOfActiveMonth = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active .mt-date-picker-day-item:not(.mt-date-picker-selected, .mt-date-picker-today, .mt-date-picker-text-secondary):first-of-type')
+            firstDayOfActiveMonth.classList.add('mt-date-picker-selected')
+        } else {
+            const nextDayOfSelectedselectedDayDay = selectedDay.nextElementSibling;
+
+            if (!nextDayOfSelectedselectedDayDay.classList.contains('mt-date-picker-text-secondary')) {
+                nextDayOfSelectedselectedDayDay.classList.add('mt-date-picker-selected');
+                selectedDay.classList.remove('mt-date-picker-selected');
+            }
         }
     })
 })
