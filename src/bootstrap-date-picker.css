@@ -15,7 +15,7 @@ body:last-child {margin-bottom: 500vh;}
 .mt-date-picker-day-item,
 button.bg-white.mt-date-picker-border-1px-solid-secondary,
 button.border-0.mt-date-picker-bg-primary,
-.mt-date-picker-month-item, .mt-date-picker-year-item, .mt-date-picker-main{transition: .3s}
+.mt-date-picker-month-item, .mt-date-picker-year-item{transition: .3s}
 .mt-date-picker-border-1px-solid-secondary {border: 1px solid var(--mt-date-picker-secondary);}
 .mt-date-picker-shadow {box-shadow: var(--mt-date-picker-shadow)}
 .mt-date-picker-text-darker-secondary {color: var(--mt-date-picker-darker-secondary);}
@@ -37,18 +37,19 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker, .mt-date-picker-toggler {font-family: Poppins, sans-serif !important;}
 .mt-date-picker-day-main-side-grid {grid-template-columns: repeat(7, 1fr);}
 .mt-date-picker-month-main-side-grid {grid-template-columns: repeat(3, 1fr);}
-.mt-date-picker-day-main.mt-date-picker-main-showing {height: 290px;}
 .mt-date-picker-main:not(.mt-date-picker-main-showing) {height: 0;opacity: 0;}
 .mt-date-picker-main.mt-date-picker-main-showing {opacity: 1;}
+.mt-date-picker-day-main.mt-date-picker-main-showing {height: 292px;}
 .mt-date-picker-month-main.mt-date-picker-main-showing {height: 244px;}
 .mt-date-picker-year-main.mt-date-picker-main-showing {height: 251px;}
+.mt-date-picker {width: 320px;}
 
-.mt-date-picker {
+.mt-date-picker,
+.mt-date-picker-main{
     left: 0;
     transition-property: all;
     transition-timing-function: cubic-bezier(.4,0,.2,1);
     transition-duration: .2s;
-    width: 320px;
 }
 
 .mt-date-picker-day-main-side-grid,
