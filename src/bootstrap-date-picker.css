@@ -38,15 +38,8 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker, .mt-date-picker-toggler {font-family: Poppins, sans-serif !important;}
 .mt-date-picker-day-main-side-grid {grid-template-columns: repeat(7, 1fr);}
 .mt-date-picker-month-main-side-grid {grid-template-columns: repeat(3, 1fr);}
-.mt-date-picker-main:not(.mt-date-picker-main-showing) {
-    width: 0;
-    height: 0;
-}
-
-.mt-date-picker-main.mt-date-picker-main-showing {
-    width: 100%;
-    height: 100%;
-}
+.mt-date-picker-main:not(.mt-date-picker-main-showing) {height: 0;}
+.mt-date-picker-main.mt-date-picker-main-showing {height: 100%;}
 
 .mt-date-picker {
     left: 0;
