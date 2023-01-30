@@ -7,6 +7,7 @@ const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-curre
 const mtDatePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
 const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
 const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
+const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
 
 const todayDate = new Date();
 const thisYear = todayDate.getFullYear();
@@ -65,6 +66,17 @@ mtMonthSelectBtn.forEach(btn => {
         const mtDatePickerDayMain = btn.parentElement.parentElement;
         const mtDatePickerMonthMain = mtDatePickerDayMain.parentElement.querySelector('.mt-date-picker-month-main');
 
-        mtDatePickerMonthMain.classList.toggle('mt-date-picker-main-showing')
+        mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
+        mtDatePickerDayMain.classList.remove('mt-date-picker-main-showing')
+    })
+})
+
+mtYearSelectBtn.forEach(btn => {
+    btn.addEventListener('click', () =>  {
+        const mtDatePickerMonthMain = btn.parentElement.parentElement;
+        const mtDatePickerYearMain = mtDatePickerMonthMain.parentElement.querySelector('.mt-date-picker-year-main');
+
+        mtDatePickerYearMain.classList.add('mt-date-picker-main-showing')
+        mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
     })
 })
