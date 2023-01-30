@@ -28,14 +28,14 @@
 <body class="min-vh-100 d-flex align-items-center justify-content-center">
 
 <!--Date Picker Holder-->
-<div role="date-picker-holder" class="mt-date-picker-holder position-relative" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
+<div role="date-picker-holder" data-opened class="mt-date-picker-holder position-relative" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
     <!--Date Picker Toggler-->
     <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
     <!--Date Picker-->
     <div role="date-picker" class="bg-white mt-date-picker mt-3 mt-date-picker-border-1px-solid-secondary mt-date-picker-shadow rounded-4 position-absolute p-3">
         <!--Top And Middle Side Holder-->
         <div class="mt-date-picker-top-middle-holder">
-            <div class="mt-date-picker-day-main">
+            <div class="mt-date-picker-main overflow-hidden mt-date-picker-main-showing mt-date-picker-day-main">
                 <!--Top Side Of Date Picker-->
                 <div class="d-flex justify-content-between mb-3">
                     <div class="d-flex">
@@ -114,7 +114,7 @@
                     <button class="border-0 mt-date-picker-fs-14px mt-date-picker-squar-size rounded-3 mt-date-picker-day-item">31</button>
                 </div>
             </div>
-            <div class="mt-date-picker-month-main">
+            <div class="mt-date-picker-main overflow-hidden mt-date-picker-month-main">
                 <!--Top Side Of Date Picker-->
                 <div class="d-flex justify-content-center mb-3">
                     <button class="text-nowrap mx-3 border-0 bg-white mt-date-picker-fs-14px mt-month-select-btn">
@@ -140,7 +140,7 @@
                     <button class="mt-date-picker-month-item px-3 py-2 border-0 rounded-3">Dec</button>
                 </div>
             </div>
-            <div class="mt-date-picker-year-main">
+            <div class="mt-date-picker-main overflow-hidden mt-date-picker-year-main">
                 <!--Top Side Of Date Picker-->
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <button class="mt-date-picker-fs-14px me-2 mt-date-picker-squar-size mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary bg-white d-flex align-items-center justify-content-center rounded-3">
