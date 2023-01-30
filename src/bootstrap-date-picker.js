@@ -98,14 +98,30 @@ mtDatePickerNextMonthBtn.forEach(btn => {
 mtDatePickerPrevMonthBtn.forEach(btn => {
     btn.addEventListener('click', () => {
         const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
-        const nextMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
+        const prevMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-        if (nextMonth !== null) {
-            nextMonth.classList.add('mt-date-picker-day-month-main-active');
+        if (prevMonth !== null) {
+            prevMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
 
-            monthToSet = monthNames[Array.prototype.slice.call(nextMonth.parentElement.children).indexOf(nextMonth)]
+            monthToSet = monthNames[Array.prototype.slice.call(prevMonth.parentElement.children).indexOf(prevMonth)]
+        }
+    })
+})
+
+mtDatePickerPrevDayBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const selectedDay = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
+
+        if (selectedDay !== null) {
+            const prevOfSelectedDay = selectedDay.previousElementSibling;
+
+            selectedDay.classList.remove('mt-date-picker-selected');
+            prevOfSelectedDay.classList.add('mt-date-picker-selected');
+        } else {
+            const firstDayItem = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid.mt-date-picker-day-month-main-active .mt-date-picker-day-item');
+            firstDayItem.classList.add('mt-date-picker-selected')
         }
     })
 })
