@@ -27,6 +27,7 @@ mtDatePickerToggler.forEach(toggler => {
         const dayMonthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-day-month-main-holder > .mt-date-picker-day-month:nth-of-type(${thisMonth})`)
         const dayItemToActivate = dayMonthItemToActivate.querySelector(`.mt-date-picker-day-item:not(.mt-date-picker-text-secondary):nth-of-type(${todayDate})`);
         const allMtDatePickerYearItems = parentOfToggler.querySelectorAll('.mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid > .mt-date-picker-year-item')
+        const monthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-month-main-side-grid > .mt-date-picker-month-item:nth-of-type(${thisMonth})`)
         let yearGridToActivate;
 
         parentOfToggler.toggleAttribute('data-opened');
@@ -37,6 +38,7 @@ mtDatePickerToggler.forEach(toggler => {
         dayItemToActivate.classList.add('mt-date-picker-selected');
         yearGridToActivate.parentElement.classList.add('mt-date-picker-year-main-side-grid-shown')
         yearGridToActivate.classList.add('mt-date-picker-year-item-selected');
+        monthItemToActivate.classList.add('mt-date-picker-month-item-selected')
 
         mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
         mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
