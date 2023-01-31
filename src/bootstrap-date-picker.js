@@ -7,9 +7,7 @@ const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-bt
 const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
 const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
 const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev-month-btn');
-const mtDatePickerPrevDayBtn = document.querySelectorAll('.mt-date-picker-prev-day-btn');
 const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
-const mtDatePickerNextDayBtn = document.querySelectorAll('.mt-date-picker-next-day-btn');
 
 const todayDate = new Date();
 const thisYear = todayDate.getFullYear();
@@ -110,17 +108,5 @@ mtDatePickerPrevMonthBtn.forEach(btn => {
 
             monthToSet = monthNames[Array.prototype.slice.call(prevMonth.parentElement.children).indexOf(prevMonth)]
         }
-    })
-})
-
-mtDatePickerPrevDayBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const selectedDay = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
-    })
-})
-
-mtDatePickerNextDayBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const selectedDay = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
     })
 })
