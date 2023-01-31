@@ -1,6 +1,5 @@
 // Codes By Mahdi Tasha
 const mtDatePickerToggler = document.querySelectorAll('.mt-date-picker-toggler');
-const mtDatePickerDayItem = document.querySelectorAll('.mt-date-picker-day-item');
 const mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-selected, .mt-date-picker-text-secondary)');
 const mtDatePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
 const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
@@ -27,11 +26,17 @@ mtDatePickerToggler.forEach(toggler => {
         const thisMonthName = today.toLocaleString('default', { month: 'long' });
         const dayMonthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-day-month-main-holder > .mt-date-picker-day-month:nth-of-type(${thisMonth})`)
         const dayItemToActivate = dayMonthItemToActivate.querySelector(`.mt-date-picker-day-item:not(.mt-date-picker-text-secondary):nth-of-type(${todayDate})`);
+        const allMtDatePickerYearItems = parentOfToggler.querySelectorAll('.mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid > .mt-date-picker-year-item')
+        let yearGridToActivate;
 
         parentOfToggler.toggleAttribute('data-opened');
 
+        allMtDatePickerYearItems.forEach(item => {if (item.textContent === `${thisYear}`) {yearGridToActivate = item}})
+
         dayMonthItemToActivate.classList.add('mt-date-picker-day-month-main-active');
-        dayItemToActivate.classList.add('mt-date-picker-today');
+        dayItemToActivate.classList.add('mt-date-picker-selected');
+        yearGridToActivate.parentElement.classList.add('mt-date-picker-year-main-side-grid-shown')
+        yearGridToActivate.classList.add('mt-date-picker-year-item-selected');
 
         mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
         mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
