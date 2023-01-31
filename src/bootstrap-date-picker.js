@@ -13,13 +13,10 @@ const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-curre
 const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-item');
 const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
 
-mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
-
 mtDatePickerToggler.forEach(toggler => {
     toggler.addEventListener('click', () => {
         const parentOfToggler = toggler.parentElement;
         const openedDatePickerHolder = document.querySelector('.mt-date-picker-holder[data-opened]');
-        const allMtDatePickerDayItem = parentOfToggler.querySelectorAll('.mt-date-picker-day-month-main-active .mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
 
         const today = new Date();
         const thisMonth = today.getMonth() + 1;
@@ -37,8 +34,8 @@ mtDatePickerToggler.forEach(toggler => {
         mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
         mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
 
+
         if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
-        if (parentOfToggler.getAttribute('data-opened') !== null) {allMtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '1'))}
     })
 })
 
@@ -75,9 +72,6 @@ mtMonthSelectBtn.forEach(btn => {
         const mtDatePickerDayMain = btn.parentElement.parentElement;
         const mtDatePickerMonthMain = mtDatePickerDayMain.parentElement.querySelector('.mt-date-picker-month-main');
 
-        mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
-        mtDatePickerMonthItem.forEach(item => item.setAttribute('tabindex', '1'))
-        mtDatePickerYearItem.forEach(item => item.setAttribute('tabindex', '-1'))
 
         mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
         mtDatePickerDayMain.classList.remove('mt-date-picker-main-showing')
@@ -89,9 +83,6 @@ mtYearSelectBtn.forEach(btn => {
         const mtDatePickerMonthMain = btn.parentElement.parentElement;
         const mtDatePickerYearMain = mtDatePickerMonthMain.parentElement.querySelector('.mt-date-picker-year-main');
 
-        mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
-        mtDatePickerMonthItem.forEach(item => item.setAttribute('tabindex', '-1'))
-        mtDatePickerYearItem.forEach(item => item.setAttribute('tabindex', '1'))
 
         mtDatePickerYearMain.classList.add('mt-date-picker-main-showing')
         mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
@@ -107,8 +98,6 @@ mtDatePickerNextMonthBtn.forEach(btn => {
         const dayItemsInNextMonth = nextMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
 
         if (nextMonth !== null) {
-            dayItemsInActiveMonth.forEach(item => item.setAttribute('tabindex', '-1'))
-            dayItemsInNextMonth.forEach(item => item.setAttribute('tabindex', '1'))
             nextMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
 
@@ -126,8 +115,6 @@ mtDatePickerPrevMonthBtn.forEach(btn => {
         const dayItemsInPrevMonth = prevMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
 
         if (prevMonth !== null) {
-            dayItemsInActiveMonth.forEach(item => item.setAttribute('tabindex', '-1'))
-            dayItemsInPrevMonth.forEach(item => item.setAttribute('tabindex', '1'))
             prevMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
 
@@ -137,8 +124,6 @@ mtDatePickerPrevMonthBtn.forEach(btn => {
 })
 
 mtDatePickerMonthItem.forEach(item => {
-    item.setAttribute('tabindex', '-1')
-
     item.addEventListener('click', () => {
         const mtDatePickerMonthMain = item.parentElement.parentElement;
         const mtDatePickerDayMain = mtDatePickerMonthMain.previousElementSibling
@@ -149,15 +134,10 @@ mtDatePickerMonthItem.forEach(item => {
         mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
         mtDatePickerDayMain.classList.add('mt-date-picker-main-showing')
 
-        mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '1'))
-        mtDatePickerMonthItem.forEach(item => item.setAttribute('tabindex', '-1'))
-        mtDatePickerYearItem.forEach(item => item.setAttribute('tabindex', '-1'))
     })
 })
 
 mtDatePickerYearItem.forEach(item => {
-    item.setAttribute('tabindex', '-1')
-
     item.addEventListener('click', () => {
         const mtDatePickerYearMain = item.parentElement.parentElement;
         const mtDatePickerMonthMain = mtDatePickerYearMain.previousElementSibling
@@ -168,8 +148,5 @@ mtDatePickerYearItem.forEach(item => {
         mtDatePickerYearMain.classList.remove('mt-date-picker-main-showing')
         mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
 
-        mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
-        mtDatePickerMonthItem.forEach(item => item.setAttribute('tabindex', '1'))
-        mtDatePickerYearItem.forEach(item => item.setAttribute('tabindex', '-1'))
     })
 })
