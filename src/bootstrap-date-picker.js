@@ -21,7 +21,7 @@ mtDatePickerToggler.forEach(toggler => {
     toggler.addEventListener('click', () => {
         const parentOfToggler = toggler.parentElement;
         const openedDatePickerHolder = document.querySelector('.mt-date-picker-holder[data-opened]');
-        const allMtDatePickerDayItem = parentOfToggler.querySelectorAll('.mt-date-picker-day-month-main-active .mt-date-picker-day-item');
+        const allMtDatePickerDayItem = parentOfToggler.querySelectorAll('.mt-date-picker-day-month-main-active .mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
 
         parentOfToggler.toggleAttribute('data-opened');
 
@@ -84,9 +84,13 @@ mtDatePickerNextMonthBtn.forEach(btn => {
         const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
         const nextMonth = mtDatePickerDayMonthMainActive.nextElementSibling;
         const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
+        const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+        const dayItemsInNextMonth = nextMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         if (nextMonth !== null) {
+            dayItemsInActiveMonth.forEach(item => item.setAttribute('tabindex', '-1'))
+            dayItemsInNextMonth.forEach(item => item.setAttribute('tabindex', '1'))
             nextMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
             if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
@@ -101,9 +105,13 @@ mtDatePickerPrevMonthBtn.forEach(btn => {
         const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
         const prevMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
         const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
+        const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+        const dayItemsInPrevMonth = prevMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         if (prevMonth !== null) {
+            dayItemsInActiveMonth.forEach(item => item.setAttribute('tabindex', '-1'))
+            dayItemsInPrevMonth.forEach(item => item.setAttribute('tabindex', '1'))
             prevMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
             if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
