@@ -8,6 +8,8 @@ const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
 const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
 const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev-month-btn');
 const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
+const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
+const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
 
 mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
 
@@ -16,8 +18,6 @@ mtDatePickerToggler.forEach(toggler => {
         const parentOfToggler = toggler.parentElement;
         const openedDatePickerHolder = document.querySelector('.mt-date-picker-holder[data-opened]');
         const allMtDatePickerDayItem = parentOfToggler.querySelectorAll('.mt-date-picker-day-month-main-active .mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
-        const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
-        const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
 
         const today = new Date();
         const thisMonth = today.getMonth() + 1;
@@ -31,7 +31,7 @@ mtDatePickerToggler.forEach(toggler => {
 
         dayMonthItemToActivate.classList.add('mt-date-picker-day-month-main-active');
         dayItemToActivate.classList.add('mt-date-picker-today');
-        
+
         mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
         mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
 
