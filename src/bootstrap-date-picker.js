@@ -21,11 +21,13 @@ mtDatePickerToggler.forEach(toggler => {
     toggler.addEventListener('click', () => {
         const parentOfToggler = toggler.parentElement;
         const openedDatePickerHolder = document.querySelector('.mt-date-picker-holder[data-opened]');
-        const allMtDatePickerDayItem = parentOfToggler.querySelectorAll('.mt-date-picker-day-item');
+        const allMtDatePickerDayItem = parentOfToggler.querySelectorAll('.mt-date-picker-day-month-main-active .mt-date-picker-day-item');
 
         parentOfToggler.toggleAttribute('data-opened');
 
         if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
+
+        if (parentOfToggler.getAttribute('data-opened') !== null) {allMtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '1'))}
     })
 })
 
