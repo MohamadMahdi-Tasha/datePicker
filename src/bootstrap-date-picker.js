@@ -35,8 +35,11 @@ mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes.forEach(item => {
     item.addEventListener('click', () => {
         const selectedItemsInParentOfClickedItem = item.parentElement.querySelector('.mt-date-picker-selected');
 
+        if (selectedItemsInParentOfClickedItem !== null) {
+            selectedItemsInParentOfClickedItem.classList.remove('mt-date-picker-selected')
+        }
+
         item.classList.add('mt-date-picker-selected');
-        if (selectedItemsInParentOfClickedItem !== null) {selectedItemsInParentOfClickedItem.classList.remove('mt-date-picker-selected')}
     })
 })
 
