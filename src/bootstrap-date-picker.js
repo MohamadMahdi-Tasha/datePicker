@@ -12,6 +12,8 @@ const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-curr
 const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
 const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-item');
 const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
+const mtDatePickerPrevGridBtn = document.querySelectorAll('.mt-date-picker-prev-grid-btn');
+const mtDatePickerNextGridBtn = document.querySelectorAll('.mt-date-picker-next-grid-btn');
 
 mtDatePickerToggler.forEach(toggler => {
     toggler.addEventListener('click', () => {
@@ -137,14 +139,36 @@ mtDatePickerMonthItem.forEach(item => {
 
 mtDatePickerYearItem.forEach(item => {
     item.addEventListener('click', () => {
-        const mtDatePickerYearMain = item.parentElement.parentElement;
+        const mtDatePickerYearMain = item.parentElement.parentElement.parentElement;
         const mtDatePickerMonthMain = mtDatePickerYearMain.previousElementSibling
         const selectedDateYear = item.parentElement.querySelector('.mt-date-picker-year-item-selected');
+
+        console.log(mtDatePickerYearMain)
 
         if (selectedDateYear !== null) {selectedDateYear.classList.remove('mt-date-picker-year-item-selected')}
         item.classList.add('mt-date-picker-year-item-selected');
         mtDatePickerYearMain.classList.remove('mt-date-picker-main-showing')
         mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
+    })
+})
 
+mtDatePickerPrevGridBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
+        const prevGrid = activeGrid.previousElementSibling;
+
+
+        if (prevGrid !== null) {prevGrid.classList.add('mt-date-picker-year-main-side-grid-shown')}
+        activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+    })
+})
+
+mtDatePickerNextGridBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
+        const nextGrid = activeGrid.nextElementSibling;
+
+        if (nextGrid !== null) {nextGrid.classList.add('mt-date-picker-year-main-side-grid-shown')}
+        activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
     })
 })

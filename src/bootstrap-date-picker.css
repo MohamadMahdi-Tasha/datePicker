@@ -57,6 +57,7 @@ button.border-0.mt-date-picker-bg-primary,
     transition-timing-function: cubic-bezier(.4,0,.2,1);
     transition-duration: .6s;
 }
+
 .mt-date-picker-top-middle-holder > .mt-date-picker-main {
     left: 0;
     width: calc(318px - 2rem);
