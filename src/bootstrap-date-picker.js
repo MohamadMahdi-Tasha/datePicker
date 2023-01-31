@@ -10,6 +10,8 @@ const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev
 const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
 const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
 const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
+const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-item');
+const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
 
 mtDatePickerDayItem.forEach(item => item.setAttribute('tabindex', '-1'))
 
@@ -123,5 +125,31 @@ mtDatePickerPrevMonthBtn.forEach(btn => {
 
             if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
         }
+    })
+})
+
+mtDatePickerMonthItem.forEach(item => {
+    item.addEventListener('click', () => {
+        const mtDatePickerMonthMain = item.parentElement.parentElement;
+        const mtDatePickerDayMain = mtDatePickerMonthMain.previousElementSibling
+        const selectedDateMonth = item.parentElement.querySelector('.mt-date-picker-month-item-selected');
+
+        if (selectedDateMonth !== null) {selectedDateMonth.classList.remove('mt-date-picker-month-item-selected')}
+        item.classList.add('mt-date-picker-month-item-selected');
+        mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
+        mtDatePickerDayMain.classList.add('mt-date-picker-main-showing')
+    })
+})
+
+mtDatePickerYearItem.forEach(item => {
+    item.addEventListener('click', () => {
+        const mtDatePickerYearMain = item.parentElement.parentElement;
+        const mtDatePickerMonthMain = mtDatePickerYearMain.previousElementSibling
+        const selectedDateYear = item.parentElement.querySelector('.mt-date-picker-year-item-selected');
+
+        if (selectedDateYear !== null) {selectedDateYear.classList.remove('mt-date-picker-year-item-selected')}
+        item.classList.add('mt-date-picker-year-item-selected');
+        mtDatePickerYearMain.classList.remove('mt-date-picker-main-showing')
+        mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
     })
 })
