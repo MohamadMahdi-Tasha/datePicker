@@ -34,7 +34,6 @@ mtDatePickerToggler.forEach(toggler => {
         mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
         mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
 
-
         if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
     })
 })
@@ -82,7 +81,6 @@ mtYearSelectBtn.forEach(btn => {
     btn.addEventListener('click', () =>  {
         const mtDatePickerMonthMain = btn.parentElement.parentElement;
         const mtDatePickerYearMain = mtDatePickerMonthMain.parentElement.querySelector('.mt-date-picker-year-main');
-
 
         mtDatePickerYearMain.classList.add('mt-date-picker-main-showing')
         mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
