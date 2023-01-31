@@ -83,11 +83,13 @@ mtDatePickerNextMonthBtn.forEach(btn => {
     btn.addEventListener('click', () => {
         const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
         const nextMonth = mtDatePickerDayMonthMainActive.nextElementSibling;
+        const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         if (nextMonth !== null) {
             nextMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+            if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
 
             monthToSet = monthNames[Array.prototype.slice.call(nextMonth.parentElement.children).indexOf(nextMonth)]
         }
@@ -98,11 +100,13 @@ mtDatePickerPrevMonthBtn.forEach(btn => {
     btn.addEventListener('click', () => {
         const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
         const prevMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
+        const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
         if (prevMonth !== null) {
             prevMonth.classList.add('mt-date-picker-day-month-main-active');
             mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+            if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
 
             monthToSet = monthNames[Array.prototype.slice.call(prevMonth.parentElement.children).indexOf(prevMonth)]
         }
