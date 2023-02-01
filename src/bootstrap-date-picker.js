@@ -806,8 +806,8 @@ mtDatePickerToggler.forEach(toggler => {
         dayMonthItemToActivate.classList.add('mt-date-picker-day-month-main-active');
         dayItemToActivate[todayDate - 1].classList.add('mt-date-picker-today');
         yearGridToActivate.parentElement.classList.add('mt-date-picker-year-main-side-grid-shown')
-        yearGridToActivate.classList.add('mt-date-picker-year-item-selected');
-        monthItemToActivate.classList.add('mt-date-picker-month-item-selected')
+        yearGridToActivate.classList.add('mt-date-picker-year-item-current');
+        monthItemToActivate.classList.add('mt-date-picker-month-item-current')
 
         mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
         mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
