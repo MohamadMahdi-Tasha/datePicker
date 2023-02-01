@@ -794,7 +794,7 @@ mtDatePickerToggler.forEach(toggler => {
         const todayDate = today.getDate();
         const thisMonthName = today.toLocaleString('default', { month: 'long' });
         const dayMonthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-day-month-main-holder > .mt-date-picker-day-month:nth-of-type(${thisMonth})`)
-        const dayItemToActivate = dayMonthItemToActivate.querySelector(`.mt-date-picker-day-item:not(.mt-date-picker-text-secondary):nth-of-type(${todayDate})`);
+        const dayItemToActivate = dayMonthItemToActivate.querySelectorAll(`.mt-date-picker-day-item:not(.mt-date-picker-text-secondary)`);
         const allMtDatePickerYearItems = parentOfToggler.querySelectorAll('.mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid > .mt-date-picker-year-item')
         const monthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-month-main-side-grid > .mt-date-picker-month-item:nth-of-type(${thisMonth})`)
         let yearGridToActivate;
@@ -804,7 +804,7 @@ mtDatePickerToggler.forEach(toggler => {
         allMtDatePickerYearItems.forEach(item => {if (item.textContent === `${thisYear}`) {yearGridToActivate = item}})
 
         dayMonthItemToActivate.classList.add('mt-date-picker-day-month-main-active');
-        dayItemToActivate.classList.add('mt-date-picker-selected');
+        dayItemToActivate[todayDate - 1].classList.add('mt-date-picker-today');
         yearGridToActivate.parentElement.classList.add('mt-date-picker-year-main-side-grid-shown')
         yearGridToActivate.classList.add('mt-date-picker-year-item-selected');
         monthItemToActivate.classList.add('mt-date-picker-month-item-selected')
