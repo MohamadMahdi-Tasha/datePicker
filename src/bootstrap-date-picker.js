@@ -934,8 +934,10 @@ mtDatePickerPrevGridBtn.forEach(btn => {
         const prevGrid = activeGrid.previousElementSibling;
 
 
-        if (prevGrid !== null) {prevGrid.classList.add('mt-date-picker-year-main-side-grid-shown')}
-        activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+        if (prevGrid !== null) {
+            prevGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
+            activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+        }
     })
 })
 
@@ -944,7 +946,9 @@ mtDatePickerNextGridBtn.forEach(btn => {
         const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
         const nextGrid = activeGrid.nextElementSibling;
 
-        if (nextGrid !== null) {nextGrid.classList.add('mt-date-picker-year-main-side-grid-shown')}
-        activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+        if (nextGrid !== null) {
+            nextGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
+            activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+        }
     })
 })
