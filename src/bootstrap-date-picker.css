@@ -1,13 +1,4 @@
 /*Codes By Mahdi Tasha*/
-/*Variables*/
-.mt-date-picker-holder {
-    --mt-date-picker-primary: #3069fe;
-    --mt-date-picker-darker-primary: #2554ce;
-    --mt-date-picker-secondary: #e6e6e6;
-    --mt-date-picker-darker-secondary: #868686;
-    --mt-date-picker-shadow: 0 5px 10px rgba(0,0,0,.08);
-}
-
 /*For Debugging*/
 body:last-child {margin-bottom: 500vh;}
 
