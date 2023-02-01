@@ -33,6 +33,9 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-top-middle-holder {height: 287px;}
 .mt-date-picker-year-main-side-grid {width: calc(320px - 2rem);}
 .mt-date-picker {width: 320px;}
+.mt-date-picker.mt-date-picker-center {left: -10%;}
+.mt-date-picker.mt-date-picker-left {left: 0;}
+.mt-date-picker.mt-date-picker-right {left: -19%;}
 .mt-date-picker-day-month-main-holder {height: 210px;}
 .mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid.mt-date-picker-day-month-main-active {left: 0;opacity: 1;}
 .mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid:not(.mt-date-picker-day-month-main-active) {left: 310px;opacity: 0;}

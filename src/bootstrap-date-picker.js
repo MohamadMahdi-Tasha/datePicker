@@ -8,7 +8,7 @@ class MTDatePicker extends HTMLElement {
                     <!--Date Picker Toggler-->
                     <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
                     <!--Date Picker-->
-                    <div role="date-picker" class="bg-white mt-date-picker overflow-hidden mt-3 mt-date-picker-border-1px-solid-secondary mt-date-picker-shadow rounded-4 position-absolute p-3">
+                    <div role="date-picker" class="bg-white mt-date-picker ${(this.getAttribute('date-picker-position') === null) ? 'mt-date-picker-center' : `mt-date-picker-${this.getAttribute('date-picker-position')}`} overflow-hidden mt-3 mt-date-picker-border-1px-solid-secondary mt-date-picker-shadow rounded-4 position-absolute p-3">
                         <!--Top And Middle Side Holder-->
                         <div class="mt-date-picker-top-middle-holder overflow-hidden position-relative">
                             <div class="mt-date-picker-main bg-white overflow-hidden position-absolute mt-date-picker-day-main mt-date-picker-main-showing">
