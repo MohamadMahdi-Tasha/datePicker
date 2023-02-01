@@ -4,7 +4,7 @@ class MTDatePicker extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <!--Date Picker Holder-->
-                <div role="date-picker-holder" class="mt-date-picker-holder position-relative" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
+                <div style="${this.getAttribute('style-variables')}" role="date-picker-holder" class="mt-date-picker-holder position-relative" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
                     <!--Date Picker Toggler-->
                     <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
                     <!--Date Picker-->
