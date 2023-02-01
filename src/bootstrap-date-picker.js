@@ -4,7 +4,7 @@ class MTDatePicker extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <!--Date Picker Holder-->
-                <div style="${(this.getAttribute('style-variables') === null) ? '--mt-date-picker-primary: #3069fe;--mt-date-picker-darker-primary: #2554ce;--mt-date-picker-secondary: #e6e6e6;--mt-date-picker-darker-secondary: #868686;--mt-date-picker-shadow: 0 5px 10px rgba(0,0,0,.08);' : this.getAttribute('style-variables')}" role="date-picker-holder" class="mt-date-picker-holder position-relative" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
+                <div style="${(this.getAttribute('style-variables') === null) ? '--mt-date-picker-primary: #3069fe;--mt-date-picker-darker-primary: #2554ce;--mt-date-picker-secondary: #e6e6e6;--mt-date-picker-darker-secondary: #868686;--mt-date-picker-shadow: 0 5px 10px rgba(0,0,0,.08);' : this.getAttribute('style-variables')}" role="date-picker-holder" class="mt-date-picker-holder" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
                     <!--Date Picker Toggler-->
                     <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
                     <!--Date Picker-->
@@ -756,9 +756,9 @@ class MTDatePicker extends HTMLElement {
                             </div>
                         </div>
                         <!--Bottom Side (Active Or Cancel)-->
-                        <div class="d-flex mt-3">
-                            <button class="me-2 mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary rounded-3 w-50 py-2 px-3 bg-white mt-date-picker-fs-16px mt-date-picker-cancel-btn">Cancel</button>
-                            <button class="border-0 w-50 rounded-3 text-white py-2 px-3 mt-date-picker-bg-primary mt-date-picker-fs-16px mt-date-picker-apply-btn">Apply</button>
+                        <div class="d-flex flex-lg-row flex-column mt-3">
+                            <button class="me-lg-2 me-0 mb-lg-0 mb-2 d-block mt-date-picker-text-darker-secondary mt-date-picker-border-1px-solid-secondary rounded-3 py-2 px-3 bg-white mt-date-picker-fs-16px mt-date-picker-cancel-btn">Cancel</button>
+                            <button class="border-0 d-block rounded-3 text-white py-2 px-3 mt-date-picker-bg-primary mt-date-picker-fs-16px mt-date-picker-apply-btn">Apply</button>
                         </div>
                     </div>
 </div>
