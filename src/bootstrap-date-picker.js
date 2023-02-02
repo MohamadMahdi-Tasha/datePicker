@@ -836,11 +836,20 @@ mtDatePickerApplyBtn.forEach(btn => {
         const selectedDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
         const selectedMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-selected');
         const selectedYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-selected');
+        const currentDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-today');
+        const currentMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-current');
+        const currentYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-current');
 
         datePickerHolderOfClickedBtn.removeAttribute('data-opened');
-        datePickerHolderOfClickedBtn.setAttribute('data-selected-day', selectedDay.textContent);
-        datePickerHolderOfClickedBtn.setAttribute('data-selected-month', selectedMonth.textContent);
-        datePickerHolderOfClickedBtn.setAttribute('data-selected-year', selectedYear.textContent);
+        if (selectedDay === null && selectedMonth === null && selectedYear === null) {
+            datePickerHolderOfClickedBtn.setAttribute('data-selected-day', currentDay.textContent);
+            datePickerHolderOfClickedBtn.setAttribute('data-selected-month', currentMonth.textContent);
+            datePickerHolderOfClickedBtn.setAttribute('data-selected-year', currentYear.textContent);
+        } else {
+            datePickerHolderOfClickedBtn.setAttribute('data-selected-day', selectedDay.textContent);
+            datePickerHolderOfClickedBtn.setAttribute('data-selected-month', selectedMonth.textContent);
+            datePickerHolderOfClickedBtn.setAttribute('data-selected-year', selectedYear.textContent);
+        }
     })
 })
 
