@@ -812,10 +812,13 @@ window.addEventListener('load', () => {
                 const monthHolderInDatePicker = openedDatePicker.querySelector('.mt-date-picker-month-main')
                 const yearHolderInDatePicker = openedDatePicker.querySelector('.mt-date-picker-year-main')
                 const dayHolderInDatePicker = openedDatePicker.querySelector('.mt-date-picker-day-main')
+                const previousMonthDaysInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-prev-month-btn');
+                const nextMonthDaysInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-next-month-btn');
 
                 if (pressedKey === 'escape') {
                     allOpenedDatePickers.forEach(item => item.removeAttribute('data-opened'))
-                } else if (pressedKey === 'arrowup') {
+                }
+                else if (pressedKey === 'arrowup') {
                     event.preventDefault();
 
                     if (!monthHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
@@ -835,6 +838,12 @@ window.addEventListener('load', () => {
                         monthHolderInDatePicker.classList.add('mt-date-picker-main-showing');
                         yearHolderInDatePicker.classList.remove('mt-date-picker-main-showing');
                     }
+                }
+                else if (pressedKey === 'arrowleft' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
+                    previousMonthDaysInOpenedDatePicker.click()
+                }
+                else if (pressedKey === 'arrowright' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
+                    nextMonthDaysInOpenedDatePicker.click()
                 }
             })
 
