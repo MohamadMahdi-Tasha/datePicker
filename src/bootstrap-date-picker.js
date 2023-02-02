@@ -1,22 +1,4 @@
 // Codes By Mahdi Tasha
-
-// Variables
-const mtDatePickerToggler = document.querySelectorAll('.mt-date-picker-toggler');
-const mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-selected, .mt-date-picker-text-secondary)');
-const mtDatePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
-const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
-const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
-const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
-const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev-month-btn');
-const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
-const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
-const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
-const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-item');
-const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
-const mtDatePickerPrevGridBtn = document.querySelectorAll('.mt-date-picker-prev-grid-btn');
-const mtDatePickerNextGridBtn = document.querySelectorAll('.mt-date-picker-next-grid-btn');
-const everyButtonInDatePicker = document.querySelectorAll('.mt-date-picker button');
-
 // Date Picker Custom Element
 class MTDatePicker extends HTMLElement {
     constructor() {super();}
@@ -787,6 +769,23 @@ class MTDatePicker extends HTMLElement {
 
 // Defining Custom Element Of Date Picker
 window.customElements.define('mt-date-picker', MTDatePicker);
+
+// Variables
+const mtDatePickerToggler = document.querySelectorAll('.mt-date-picker-toggler');
+const mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-selected, .mt-date-picker-text-secondary)');
+const mtDatePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
+const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
+const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
+const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
+const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev-month-btn');
+const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
+const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
+const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
+const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-item');
+const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
+const mtDatePickerPrevGridBtn = document.querySelectorAll('.mt-date-picker-prev-grid-btn');
+const mtDatePickerNextGridBtn = document.querySelectorAll('.mt-date-picker-next-grid-btn');
+const everyButtonInDatePicker = document.querySelectorAll('.mt-date-picker button');
 
 // Adding Event Listner Of Load On Window
 window.addEventListener('load', () => {
