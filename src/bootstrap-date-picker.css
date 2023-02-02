@@ -1,4 +1,5 @@
 /*Codes By Mahdi Tasha*/
+
 /*Styles*/
 .mt-date-picker-day-item,
 button.bg-white.mt-date-picker-border-1px-solid-secondary,
@@ -24,7 +25,7 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-month-item.mt-date-picker-month-item-selected{background-color: var(--mt-date-picker-secondary);}
 .mt-date-picker-squar-size {width: 30px;height: 30px;}
 .mt-date-picker-bg-primary {background-color: var(--mt-date-picker-primary);}
-.mt-date-picker, .mt-date-picker-toggler {font-family: Poppins, sans-serif !important;}
+.mt-date-picker, .mt-date-picker-toggler {font-family: var(--mt-date-picker-font-family);}
 .mt-date-picker-day-main-side-grid {grid-template-columns: repeat(7, 1fr);justify-items: center}
 .mt-date-picker-month-main-side-grid, .mt-date-picker-year-main-side-grid {grid-template-columns: repeat(3, 1fr);}
 .mt-date-picker-top-middle-holder {height: 287px;}

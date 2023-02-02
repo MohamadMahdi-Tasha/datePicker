@@ -5,7 +5,7 @@ class MTDatePicker extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <!--Date Picker Holder-->
-                <div style="${(this.getAttribute('style-variables') === null) ? '--mt-date-picker-primary: #3069fe;--mt-date-picker-darker-primary: #2554ce;--mt-date-picker-secondary: #e6e6e6;--mt-date-picker-darker-secondary: #868686;--mt-date-picker-shadow: 0 5px 10px rgba(0,0,0,.08);' : this.getAttribute('style-variables')}" role="date-picker-holder" class="mt-date-picker-holder" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
+                <div style="${(this.getAttribute('style-variables') === null) ? '--mt-date-picker-primary: #3069fe;--mt-date-picker-darker-primary: #2554ce;--mt-date-picker-secondary: #e6e6e6;--mt-date-picker-darker-secondary: #868686;--mt-date-picker-shadow: 0 5px 10px rgba(0,0,0,.08);--mt-date-picker-font-family:serif !important' : this.getAttribute('style-variables')}" role="date-picker-holder" class="mt-date-picker-holder" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
                     <!--Date Picker Toggler-->
                     <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
                     <!--Date Picker-->
@@ -801,6 +801,7 @@ window.addEventListener('load', () => {
         const mtDatePickerSecondaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-secondary');
         const mtDatePickerDarkerSecondaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-darker-secondary');
         const mtDatePickerShadowCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-shadow');
+        const mtDatePickerFontCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-font-family');
 
         // if There Is One Empty Style In Holder Of Each Date Picker ...
         if (
@@ -808,7 +809,8 @@ window.addEventListener('load', () => {
             mtDatePickerDarkerPrimaryCssVariable === '' ||
             mtDatePickerSecondaryCssVariable === '' ||
             mtDatePickerDarkerSecondaryCssVariable === '' ||
-            mtDatePickerShadowCssVariable === ''
+            mtDatePickerShadowCssVariable === '' ||
+            mtDatePickerFontCssVariable === ''
         ) {
             // Add Class Of 'mt-date-picker-errored' To Toggler
             holderOfDatePickerInElement.firstElementChild.classList.add('mt-date-picker-errored')
