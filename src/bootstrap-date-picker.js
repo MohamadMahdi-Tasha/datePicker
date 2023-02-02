@@ -811,7 +811,7 @@ window.addEventListener('load', () => {
                 if (pressedKey === 'escape') {
                     const allOpenedDatePickers = document.querySelectorAll('.mt-date-picker-holder[data-opened]');
 
-                    allOpenedDatePickers.forEach(item => item.remove('data-opened'))
+                    allOpenedDatePickers.forEach(item => item.removeAttribute('data-opened'))
                 }
             })
 
