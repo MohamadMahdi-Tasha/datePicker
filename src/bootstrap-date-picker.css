@@ -51,6 +51,24 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-today.mt-date-picker-selected,
 .mt-date-picker-month-item-current.mt-date-picker-month-item-selected,
 .mt-date-picker-year-item-current.mt-date-picker-year-item-selected{border-color: var(--mt-date-picker-darker-primary);color: var(--mt-date-picker-darker-primary);}
+.mt-date-picker-errored {border: 1px solid red !important;color: red !important;position:relative !important;}
+
+.mt-date-picker-errored::before {
+    content: 'Errored Element >';
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    transform: translateX(-120%);
+    background-color: rgba(0,0,0,.2);
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .6s;
+}
 
 .mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid {
     transition-property: all;
@@ -109,6 +127,7 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-year-item:not(.mt-date-picker-year-item-current):hover {background-color: var(--mt-date-picker-secondary);}
 button.bg-white.mt-date-picker-border-1px-solid-secondary:hover {background-color: var(--mt-date-picker-secondary) !important;}
 button.border-0.mt-date-picker-bg-primary:hover {background-color: var(--mt-date-picker-darker-primary) !important;}
+.mt-date-picker-errored:hover:before {transform: translateX(-110%);opacity: 1;}
 
 /*Media Querys*/
 @media (max-width: 991px) {

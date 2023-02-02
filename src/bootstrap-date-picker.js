@@ -783,181 +783,205 @@ const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-ite
 const mtDatePickerPrevGridBtn = document.querySelectorAll('.mt-date-picker-prev-grid-btn');
 const mtDatePickerNextGridBtn = document.querySelectorAll('.mt-date-picker-next-grid-btn');
 
-mtDatePickerToggler.forEach(toggler => {
-    toggler.addEventListener('click', () => {
-        const parentOfToggler = toggler.parentElement;
-        const openedDatePickerHolder = document.querySelector('.mt-date-picker-holder[data-opened]');
+window.addEventListener('load', () => {
+    const mtDatePickerCustomElements = document.querySelectorAll('mt-date-picker');
+    mtDatePickerCustomElements.forEach(element => {
+        const holderOfDatePickerInElement = element.firstElementChild;
+        const computedStylesOfHolderOfDatePickerInElement = getComputedStyle(holderOfDatePickerInElement);
+        const mtDatePickerPrimaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-primary');
+        const mtDatePickerDarkerPrimaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-darker-primary');
+        const mtDatePickerSecondaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-secondary');
+        const mtDatePickerDarkerSecondaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-darker-secondary');
+        const mtDatePickerShadowCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-shadow');
 
-        const today = new Date();
-        const thisMonth = today.getMonth() + 1;
-        const thisYear = today.getFullYear();
-        const todayDate = today.getDate();
-        const thisMonthName = today.toLocaleString('default', { month: 'long' });
-        const dayMonthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-day-month-main-holder > .mt-date-picker-day-month:nth-of-type(${thisMonth})`)
-        const dayItemToActivate = dayMonthItemToActivate.querySelectorAll(`.mt-date-picker-day-item:not(.mt-date-picker-text-secondary)`);
-        const allMtDatePickerYearItems = parentOfToggler.querySelectorAll('.mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid > .mt-date-picker-year-item')
-        const monthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-month-main-side-grid > .mt-date-picker-month-item:nth-of-type(${thisMonth})`)
-        let yearGridToActivate;
-
-        parentOfToggler.toggleAttribute('data-opened');
-
-        allMtDatePickerYearItems.forEach(item => {if (item.textContent === `${thisYear}`) {yearGridToActivate = item}})
-
-        dayMonthItemToActivate.classList.add('mt-date-picker-day-month-main-active');
-        dayItemToActivate[todayDate - 1].classList.add('mt-date-picker-today');
-        yearGridToActivate.parentElement.classList.add('mt-date-picker-year-main-side-grid-shown')
-        yearGridToActivate.classList.add('mt-date-picker-year-item-current');
-        monthItemToActivate.classList.add('mt-date-picker-month-item-current')
-
-        mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
-        mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
-
-        if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
-    })
-})
-
-mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes.forEach(item => {
-    item.addEventListener('click', () => {
-        const selectedItemsInParentOfClickedItem = item.parentElement.querySelector('.mt-date-picker-selected');
-
-        if (selectedItemsInParentOfClickedItem !== null) {
-            selectedItemsInParentOfClickedItem.classList.remove('mt-date-picker-selected')
-        }
-
-        item.classList.add('mt-date-picker-selected');
-    })
-})
-
-mtDatePickerCancelBtn.forEach(btn => btn.addEventListener('click', () => btn.parentElement.parentElement.parentElement.removeAttribute('data-opened')))
-
-mtDatePickerApplyBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const datePickerHolderOfClickedBtn = btn.parentElement.parentElement.parentElement;
-        const selectedDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
-        const selectedMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-selected');
-        const selectedYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-selected');
-        const currentDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-today');
-        const currentMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-current');
-        const currentYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-current');
-
-        datePickerHolderOfClickedBtn.removeAttribute('data-opened');
-        if (selectedDay === null && selectedMonth === null && selectedYear === null) {
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-day', currentDay.textContent);
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-month', currentMonth.textContent);
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-year', currentYear.textContent);
+        if (
+            mtDatePickerPrimaryCssVariable === '' ||
+            mtDatePickerDarkerPrimaryCssVariable === '' ||
+            mtDatePickerSecondaryCssVariable === '' ||
+            mtDatePickerDarkerSecondaryCssVariable === '' ||
+            mtDatePickerShadowCssVariable === ''
+        ) {
+            holderOfDatePickerInElement.firstElementChild.classList.add('mt-date-picker-errored')
+            throw new Error('The Styles Are Not Complete. Please Add Styles To Custom Element In Html File');
         } else {
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-day', selectedDay.textContent);
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-month', selectedMonth.textContent);
-            datePickerHolderOfClickedBtn.setAttribute('data-selected-year', selectedYear.textContent);
-        }
-    })
-})
+            mtDatePickerToggler.forEach(toggler => {
+                toggler.addEventListener('click', () => {
+                    const parentOfToggler = toggler.parentElement;
+                    const openedDatePickerHolder = document.querySelector('.mt-date-picker-holder[data-opened]');
 
-mtMonthSelectBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const mtDatePickerDayMain = btn.parentElement.parentElement;
-        const mtDatePickerMonthMain = mtDatePickerDayMain.parentElement.querySelector('.mt-date-picker-month-main');
+                    const today = new Date();
+                    const thisMonth = today.getMonth() + 1;
+                    const thisYear = today.getFullYear();
+                    const todayDate = today.getDate();
+                    const thisMonthName = today.toLocaleString('default', { month: 'long' });
+                    const dayMonthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-day-month-main-holder > .mt-date-picker-day-month:nth-of-type(${thisMonth})`)
+                    const dayItemToActivate = dayMonthItemToActivate.querySelectorAll(`.mt-date-picker-day-item:not(.mt-date-picker-text-secondary)`);
+                    const allMtDatePickerYearItems = parentOfToggler.querySelectorAll('.mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid > .mt-date-picker-year-item')
+                    const monthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-month-main-side-grid > .mt-date-picker-month-item:nth-of-type(${thisMonth})`)
+                    let yearGridToActivate;
 
+                    parentOfToggler.toggleAttribute('data-opened');
 
-        mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
-        mtDatePickerDayMain.classList.remove('mt-date-picker-main-showing')
-    })
-})
+                    allMtDatePickerYearItems.forEach(item => {if (item.textContent === `${thisYear}`) {yearGridToActivate = item}})
 
-mtYearSelectBtn.forEach(btn => {
-    btn.addEventListener('click', () =>  {
-        const mtDatePickerMonthMain = btn.parentElement.parentElement;
-        const mtDatePickerYearMain = mtDatePickerMonthMain.parentElement.querySelector('.mt-date-picker-year-main');
+                    dayMonthItemToActivate.classList.add('mt-date-picker-day-month-main-active');
+                    dayItemToActivate[todayDate - 1].classList.add('mt-date-picker-today');
+                    yearGridToActivate.parentElement.classList.add('mt-date-picker-year-main-side-grid-shown')
+                    yearGridToActivate.classList.add('mt-date-picker-year-item-current');
+                    monthItemToActivate.classList.add('mt-date-picker-month-item-current')
 
-        mtDatePickerYearMain.classList.add('mt-date-picker-main-showing')
-        mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
-    })
-})
+                    mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
+                    mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
 
-mtDatePickerNextMonthBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
-        const nextMonth = mtDatePickerDayMonthMainActive.nextElementSibling;
-        const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
-        const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
-        const dayItemsInNextMonth = nextMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+                    if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
+                })
+            })
 
-        if (nextMonth !== null) {
-            nextMonth.classList.add('mt-date-picker-day-month-main-active');
-            mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+            mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes.forEach(item => {
+                item.addEventListener('click', () => {
+                    const selectedItemsInParentOfClickedItem = item.parentElement.querySelector('.mt-date-picker-selected');
 
-            if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
-        }
-    })
-})
+                    if (selectedItemsInParentOfClickedItem !== null) {
+                        selectedItemsInParentOfClickedItem.classList.remove('mt-date-picker-selected')
+                    }
 
-mtDatePickerPrevMonthBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
-        const prevMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
-        const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
-        const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
-        const dayItemsInPrevMonth = prevMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+                    item.classList.add('mt-date-picker-selected');
+                })
+            })
 
-        if (prevMonth !== null) {
-            prevMonth.classList.add('mt-date-picker-day-month-main-active');
-            mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+            mtDatePickerCancelBtn.forEach(btn => btn.addEventListener('click', () => btn.parentElement.parentElement.parentElement.removeAttribute('data-opened')))
 
-            if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
-        }
-    })
-})
+            mtDatePickerApplyBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const datePickerHolderOfClickedBtn = btn.parentElement.parentElement.parentElement;
+                    const selectedDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
+                    const selectedMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-selected');
+                    const selectedYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-selected');
+                    const currentDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-today');
+                    const currentMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-current');
+                    const currentYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-current');
 
-mtDatePickerMonthItem.forEach(item => {
-    item.addEventListener('click', () => {
-        const mtDatePickerMonthMain = item.parentElement.parentElement;
-        const mtDatePickerDayMain = mtDatePickerMonthMain.previousElementSibling
-        const selectedDateMonth = item.parentElement.querySelector('.mt-date-picker-month-item-selected');
+                    datePickerHolderOfClickedBtn.removeAttribute('data-opened');
+                    if (selectedDay === null && selectedMonth === null && selectedYear === null) {
+                        datePickerHolderOfClickedBtn.setAttribute('data-selected-day', currentDay.textContent);
+                        datePickerHolderOfClickedBtn.setAttribute('data-selected-month', currentMonth.textContent);
+                        datePickerHolderOfClickedBtn.setAttribute('data-selected-year', currentYear.textContent);
+                    } else {
+                        datePickerHolderOfClickedBtn.setAttribute('data-selected-day', selectedDay.textContent);
+                        datePickerHolderOfClickedBtn.setAttribute('data-selected-month', selectedMonth.textContent);
+                        datePickerHolderOfClickedBtn.setAttribute('data-selected-year', selectedYear.textContent);
+                    }
+                })
+            })
 
-        if (selectedDateMonth !== null) {selectedDateMonth.classList.remove('mt-date-picker-month-item-selected')}
-        item.classList.add('mt-date-picker-month-item-selected');
-        mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
-        mtDatePickerDayMain.classList.add('mt-date-picker-main-showing')
-
-    })
-})
-
-mtDatePickerYearItem.forEach(item => {
-    item.addEventListener('click', () => {
-        const mtDatePickerYearMain = item.parentElement.parentElement.parentElement;
-        const mtDatePickerMonthMain = mtDatePickerYearMain.previousElementSibling
-        const selectedDateYear = item.parentElement.querySelector('.mt-date-picker-year-item-selected');
-
-        console.log(mtDatePickerYearMain)
-
-        if (selectedDateYear !== null) {selectedDateYear.classList.remove('mt-date-picker-year-item-selected')}
-        item.classList.add('mt-date-picker-year-item-selected');
-        mtDatePickerYearMain.classList.remove('mt-date-picker-main-showing')
-        mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
-    })
-})
-
-mtDatePickerPrevGridBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
-        const prevGrid = activeGrid.previousElementSibling;
+            mtMonthSelectBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const mtDatePickerDayMain = btn.parentElement.parentElement;
+                    const mtDatePickerMonthMain = mtDatePickerDayMain.parentElement.querySelector('.mt-date-picker-month-main');
 
 
-        if (prevGrid !== null) {
-            prevGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
-            activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
-        }
-    })
-})
+                    mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
+                    mtDatePickerDayMain.classList.remove('mt-date-picker-main-showing')
+                })
+            })
 
-mtDatePickerNextGridBtn.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
-        const nextGrid = activeGrid.nextElementSibling;
+            mtYearSelectBtn.forEach(btn => {
+                btn.addEventListener('click', () =>  {
+                    const mtDatePickerMonthMain = btn.parentElement.parentElement;
+                    const mtDatePickerYearMain = mtDatePickerMonthMain.parentElement.querySelector('.mt-date-picker-year-main');
 
-        if (nextGrid !== null) {
-            nextGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
-            activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+                    mtDatePickerYearMain.classList.add('mt-date-picker-main-showing')
+                    mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
+                })
+            })
+
+            mtDatePickerNextMonthBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
+                    const nextMonth = mtDatePickerDayMonthMainActive.nextElementSibling;
+                    const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
+                    const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+                    const dayItemsInNextMonth = nextMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+
+                    if (nextMonth !== null) {
+                        nextMonth.classList.add('mt-date-picker-day-month-main-active');
+                        mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+
+                        if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
+                    }
+                })
+            })
+
+            mtDatePickerPrevMonthBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
+                    const prevMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
+                    const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
+                    const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+                    const dayItemsInPrevMonth = prevMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
+
+                    if (prevMonth !== null) {
+                        prevMonth.classList.add('mt-date-picker-day-month-main-active');
+                        mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
+
+                        if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
+                    }
+                })
+            })
+
+            mtDatePickerMonthItem.forEach(item => {
+                item.addEventListener('click', () => {
+                    const mtDatePickerMonthMain = item.parentElement.parentElement;
+                    const mtDatePickerDayMain = mtDatePickerMonthMain.previousElementSibling
+                    const selectedDateMonth = item.parentElement.querySelector('.mt-date-picker-month-item-selected');
+
+                    if (selectedDateMonth !== null) {selectedDateMonth.classList.remove('mt-date-picker-month-item-selected')}
+                    item.classList.add('mt-date-picker-month-item-selected');
+                    mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
+                    mtDatePickerDayMain.classList.add('mt-date-picker-main-showing')
+
+                })
+            })
+
+            mtDatePickerYearItem.forEach(item => {
+                item.addEventListener('click', () => {
+                    const mtDatePickerYearMain = item.parentElement.parentElement.parentElement;
+                    const mtDatePickerMonthMain = mtDatePickerYearMain.previousElementSibling
+                    const selectedDateYear = item.parentElement.querySelector('.mt-date-picker-year-item-selected');
+
+                    console.log(mtDatePickerYearMain)
+
+                    if (selectedDateYear !== null) {selectedDateYear.classList.remove('mt-date-picker-year-item-selected')}
+                    item.classList.add('mt-date-picker-year-item-selected');
+                    mtDatePickerYearMain.classList.remove('mt-date-picker-main-showing')
+                    mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
+                })
+            })
+
+            mtDatePickerPrevGridBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
+                    const prevGrid = activeGrid.previousElementSibling;
+
+
+                    if (prevGrid !== null) {
+                        prevGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
+                        activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+                    }
+                })
+            })
+
+            mtDatePickerNextGridBtn.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
+                    const nextGrid = activeGrid.nextElementSibling;
+
+                    if (nextGrid !== null) {
+                        nextGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
+                        activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
+                    }
+                })
+            })
         }
     })
 })
