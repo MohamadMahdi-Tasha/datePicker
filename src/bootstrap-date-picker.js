@@ -804,7 +804,6 @@ window.addEventListener('load', () => {
             holderOfDatePickerInElement.firstElementChild.classList.add('mt-date-picker-errored')
             throw new Error('The Styles Are Not Complete. Please Add Styles To Custom Element In Html File');
         } else {
-
             window.addEventListener('keydown', (event) => {
                 const pressedKey = event.key.toLowerCase();
                 const allOpenedDatePickers = document.querySelectorAll('.mt-date-picker-holder[data-opened]');
@@ -814,10 +813,10 @@ window.addEventListener('load', () => {
                 const dayHolderInDatePicker = openedDatePicker.querySelector('.mt-date-picker-day-main')
                 const previousMonthDaysInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-prev-month-btn');
                 const nextMonthDaysInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-next-month-btn');
+                const previousMonthInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-prev-grid-btn');
+                const nextMonthInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-next-grid-btn');
 
-                if (pressedKey === 'escape') {
-                    allOpenedDatePickers.forEach(item => item.removeAttribute('data-opened'))
-                }
+                if (pressedKey === 'escape') {allOpenedDatePickers.forEach(item => item.removeAttribute('data-opened'))}
                 else if (pressedKey === 'arrowup') {
                     event.preventDefault();
 
@@ -828,7 +827,8 @@ window.addEventListener('load', () => {
                         monthHolderInDatePicker.classList.remove('mt-date-picker-main-showing');
                         yearHolderInDatePicker.classList.add('mt-date-picker-main-showing');
                     }
-                } else if (pressedKey === 'arrowdown') {
+                }
+                else if (pressedKey === 'arrowdown') {
                     event.preventDefault();
 
                     if (monthHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
@@ -839,12 +839,10 @@ window.addEventListener('load', () => {
                         yearHolderInDatePicker.classList.remove('mt-date-picker-main-showing');
                     }
                 }
-                else if (pressedKey === 'arrowleft' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
-                    previousMonthDaysInOpenedDatePicker.click()
-                }
-                else if (pressedKey === 'arrowright' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
-                    nextMonthDaysInOpenedDatePicker.click()
-                }
+                else if (pressedKey === 'arrowleft' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {previousMonthDaysInOpenedDatePicker.click()}
+                else if (pressedKey === 'arrowright' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {nextMonthDaysInOpenedDatePicker.click()}
+                else if (pressedKey === 'arrowleft' && yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {previousMonthInOpenedDatePicker.click()}
+                else if (pressedKey === 'arrowright' && yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {nextMonthInOpenedDatePicker.click()}
             })
 
             mtDatePickerToggler.forEach(toggler => {
