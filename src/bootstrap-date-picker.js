@@ -804,6 +804,17 @@ window.addEventListener('load', () => {
             holderOfDatePickerInElement.firstElementChild.classList.add('mt-date-picker-errored')
             throw new Error('The Styles Are Not Complete. Please Add Styles To Custom Element In Html File');
         } else {
+
+            window.addEventListener('keydown', (event) => {
+                const pressedKey = event.key.toLowerCase();
+
+                if (pressedKey === 'escape') {
+                    const allOpenedDatePickers = document.querySelectorAll('.mt-date-picker-holder[data-opened]');
+
+                    allOpenedDatePickers.forEach(item => item.remove('data-opened'))
+                }
+            })
+
             mtDatePickerToggler.forEach(toggler => {
                 toggler.addEventListener('click', () => {
                     const parentOfToggler = toggler.parentElement;
