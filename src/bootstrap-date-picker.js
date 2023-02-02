@@ -1,4 +1,23 @@
 // Codes By Mahdi Tasha
+
+// Variables
+const mtDatePickerToggler = document.querySelectorAll('.mt-date-picker-toggler');
+const mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-selected, .mt-date-picker-text-secondary)');
+const mtDatePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
+const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
+const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
+const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
+const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev-month-btn');
+const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
+const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
+const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
+const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-item');
+const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
+const mtDatePickerPrevGridBtn = document.querySelectorAll('.mt-date-picker-prev-grid-btn');
+const mtDatePickerNextGridBtn = document.querySelectorAll('.mt-date-picker-next-grid-btn');
+const everyButtonInDatePicker = document.querySelectorAll('.mt-date-picker button');
+
+// Date Picker Custom Element
 class MTDatePicker extends HTMLElement {
     constructor() {super();}
     connectedCallback() {
@@ -766,27 +785,16 @@ class MTDatePicker extends HTMLElement {
     }
 }
 
+// Defining Custom Element Of Date Picker
 window.customElements.define('mt-date-picker', MTDatePicker);
 
-const mtDatePickerToggler = document.querySelectorAll('.mt-date-picker-toggler');
-const mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes = document.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-today, .mt-date-picker-selected, .mt-date-picker-text-secondary)');
-const mtDatePickerCancelBtn = document.querySelectorAll('.mt-date-picker-cancel-btn');
-const mtDatePickerApplyBtn = document.querySelectorAll('.mt-date-picker-apply-btn');
-const mtMonthSelectBtn = document.querySelectorAll('.mt-month-select-btn');
-const mtYearSelectBtn = document.querySelectorAll('.mt-year-select-btn');
-const mtDatePickerPrevMonthBtn = document.querySelectorAll('.mt-date-picker-prev-month-btn');
-const mtDatePickerNextMonthBtn = document.querySelectorAll('.mt-date-picker-next-month-btn');
-const mtDatePickerCurrentMonth = document.querySelectorAll('.mt-date-picker-current-month');
-const mtDatePickerCurrentYear = document.querySelectorAll('.mt-date-picker-current-year');
-const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-item');
-const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
-const mtDatePickerPrevGridBtn = document.querySelectorAll('.mt-date-picker-prev-grid-btn');
-const mtDatePickerNextGridBtn = document.querySelectorAll('.mt-date-picker-next-grid-btn');
-const everyButtonInDatePicker = document.querySelectorAll('.mt-date-picker button');
-
+// Adding Event Listner Of Load On Window
 window.addEventListener('load', () => {
     const mtDatePickerCustomElements = document.querySelectorAll('mt-date-picker');
+
+    // For Each Custom Element Of Date Picker ...
     mtDatePickerCustomElements.forEach(element => {
+        // Variables
         const holderOfDatePickerInElement = element.firstElementChild;
         const computedStylesOfHolderOfDatePickerInElement = getComputedStyle(holderOfDatePickerInElement);
         const mtDatePickerPrimaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-primary');
@@ -795,6 +803,7 @@ window.addEventListener('load', () => {
         const mtDatePickerDarkerSecondaryCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-darker-secondary');
         const mtDatePickerShadowCssVariable = computedStylesOfHolderOfDatePickerInElement.getPropertyValue('--mt-date-picker-shadow');
 
+        // if There Is One Empty Style In Holder Of Each Date Picker ...
         if (
             mtDatePickerPrimaryCssVariable === '' ||
             mtDatePickerDarkerPrimaryCssVariable === '' ||
@@ -802,12 +811,20 @@ window.addEventListener('load', () => {
             mtDatePickerDarkerSecondaryCssVariable === '' ||
             mtDatePickerShadowCssVariable === ''
         ) {
+            // Add Class Of 'mt-date-picker-errored' To Toggler
             holderOfDatePickerInElement.firstElementChild.classList.add('mt-date-picker-errored')
+
+            // Thorw New Error For Developer To Fix Bug
             throw new Error('The Styles Are Not Complete. Please Add Styles To Custom Element In Html File');
-        } else {
+        }
+        // Otherwise, ...
+        else {
+            // Adding Tab Index Of '-1' To Each Button
             everyButtonInDatePicker.forEach(btn => btn.setAttribute('tabindex', '-1'));
 
+            // Adding Event Listener Of KeyDown To Window That ...
             window.addEventListener('keydown', (event) => {
+                // Variables
                 const pressedKey = event.key.toLowerCase();
                 const allOpenedDatePickers = document.querySelectorAll('.mt-date-picker-holder[data-opened]');
                 const openedDatePicker = document.querySelector('.mt-date-picker-holder[data-opened]');
@@ -819,37 +836,55 @@ window.addEventListener('load', () => {
                 const previousMonthInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-prev-grid-btn');
                 const nextMonthInOpenedDatePicker = openedDatePicker.querySelector('.mt-date-picker-next-grid-btn');
 
+                // If Pressed Key Was Escape Button Then Close Date Picker
                 if (pressedKey === 'escape') {allOpenedDatePickers.forEach(item => item.removeAttribute('data-opened'))}
+                // If Pressed Key Was Up Arrow Button Then ...
                 else if (pressedKey === 'arrowup') {
+                    // Preventing Page From Scrolling
                     event.preventDefault();
 
+                    // Opening Month And Closing Days If Month Doesnt Contain Class Of 'mt-date-picker-main-showing'
                     if (!monthHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
                         dayHolderInDatePicker.classList.remove('mt-date-picker-main-showing');
                         monthHolderInDatePicker.classList.add('mt-date-picker-main-showing');
-                    } else if (!yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
+                    }
+                    // Opening Year And Closing Month If Year Doesnt Contain Class Of 'mt-date-picker-main-showing'
+                    else if (!yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
                         monthHolderInDatePicker.classList.remove('mt-date-picker-main-showing');
                         yearHolderInDatePicker.classList.add('mt-date-picker-main-showing');
                     }
                 }
+                // If Pressed Key Was down Arrow Button Then ...
                 else if (pressedKey === 'arrowdown') {
+                    // Preventing Page From Scrolling
                     event.preventDefault();
 
+                    // Opening Day And Closing Month If Month Contains Class Of 'mt-date-picker-main-showing'
                     if (monthHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
                         dayHolderInDatePicker.classList.add('mt-date-picker-main-showing');
                         monthHolderInDatePicker.classList.remove('mt-date-picker-main-showing');
-                    } else if (yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
+                    }
+                    // Opening Month And Closing Year If Year Contains Class Of 'mt-date-picker-main-showing'
+                    else if (yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {
                         monthHolderInDatePicker.classList.add('mt-date-picker-main-showing');
                         yearHolderInDatePicker.classList.remove('mt-date-picker-main-showing');
                     }
                 }
+                // If Pressed Key Was Left Arrow Button And Day Was Showing Then Click Previous Month Button In Top
                 else if (pressedKey === 'arrowleft' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {previousMonthDaysInOpenedDatePicker.click()}
+                // If Pressed Key Was Left Right Button And Day Was Showing Then Click next Month Button In Top
                 else if (pressedKey === 'arrowright' && dayHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {nextMonthDaysInOpenedDatePicker.click()}
+                // If Pressed Key Was Left Arrow Button And Year Was Showing Then Click Previous Month Grid Button In Top
                 else if (pressedKey === 'arrowleft' && yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {previousMonthInOpenedDatePicker.click()}
+                // If Pressed Key Was Right Arrow Button And Year Was Showing Then Click Next Month Grid Button In Top
                 else if (pressedKey === 'arrowright' && yearHolderInDatePicker.classList.contains('mt-date-picker-main-showing')) {nextMonthInOpenedDatePicker.click()}
             })
 
+            // For Each Date Picker Toggler ...
             mtDatePickerToggler.forEach(toggler => {
+                // Adding Event Listener Of CLick To Each Toggler
                 toggler.addEventListener('click', () => {
+                    // Variables
                     const parentOfToggler = toggler.parentElement;
                     const openedDatePickerHolder = document.querySelector('.mt-date-picker-holder[data-opened]');
 
@@ -864,39 +899,53 @@ window.addEventListener('load', () => {
                     const monthItemToActivate = parentOfToggler.querySelector(`.mt-date-picker-month-main-side-grid > .mt-date-picker-month-item:nth-of-type(${thisMonth})`)
                     let yearGridToActivate;
 
+                    // Opening Date Picker
                     parentOfToggler.toggleAttribute('data-opened');
 
+                    // For Each Year Items That Its Text Content Was 'thisYear' , 'yearGridToActivate' Variable Equals To It
                     allMtDatePickerYearItems.forEach(item => {if (item.textContent === `${thisYear}`) {yearGridToActivate = item}})
 
+                    // Adding Classes To Todays Date Items(Elements) And Showing Day Month Grid Holder
                     dayMonthItemToActivate.classList.add('mt-date-picker-day-month-main-active');
                     dayItemToActivate[todayDate - 1].classList.add('mt-date-picker-today');
                     yearGridToActivate.parentElement.classList.add('mt-date-picker-year-main-side-grid-shown')
                     yearGridToActivate.classList.add('mt-date-picker-year-item-current');
                     monthItemToActivate.classList.add('mt-date-picker-month-item-current')
 
+                    // For Each Month And Day Elements, Their Text Content Equals To Todays Month And Year
                     mtDatePickerCurrentMonth.forEach(item => item.textContent = thisMonthName)
                     mtDatePickerCurrentYear.forEach(item => item.textContent = thisYear)
 
+                    // If 'openedDatePickerHolder' Equals To Null Then Remove 'data-opened' Attr From It
                     if (openedDatePickerHolder !== null) {openedDatePickerHolder.removeAttribute('data-opened');}
                 })
             })
 
+            // For Each Day Items ...
             mtDatePickerDayItemWithoutTodayAndSelectedAndDisabledOnes.forEach(item => {
+                // Adding Event Listener Of Click To Them
                 item.addEventListener('click', () => {
+                    // Variable
                     const selectedItemsInParentOfClickedItem = item.parentElement.querySelector('.mt-date-picker-selected');
 
+                    // If 'selectedItemsInParentOfClickedItem' Equalt To Null Then Remove Class Of 'mt-date-picker-selected' From It
                     if (selectedItemsInParentOfClickedItem !== null) {
                         selectedItemsInParentOfClickedItem.classList.remove('mt-date-picker-selected')
                     }
 
+                    // Add Class Of 'mt-date-picker-selected' To Clicked Item
                     item.classList.add('mt-date-picker-selected');
                 })
             })
 
+            // Adding Event Listener Of Click To Each Cancel Buttons That Closes Date Picker
             mtDatePickerCancelBtn.forEach(btn => btn.addEventListener('click', () => btn.parentElement.parentElement.parentElement.removeAttribute('data-opened')))
 
+            // For Each Apply Button ...
             mtDatePickerApplyBtn.forEach(btn => {
+                // Adding Event Listener Of Click To Each Button
                 btn.addEventListener('click', () => {
+                    // Variables
                     const datePickerHolderOfClickedBtn = btn.parentElement.parentElement.parentElement;
                     const selectedDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-selected');
                     const selectedMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-selected');
@@ -905,12 +954,17 @@ window.addEventListener('load', () => {
                     const currentMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-current');
                     const currentYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-current');
 
+                    // Closing Date Picker
                     datePickerHolderOfClickedBtn.removeAttribute('data-opened');
+
+                    // If There Wasnt Selected Date Then Set Attributes Of 'datePickerHolderOfClickedBtn' To Current Dates
                     if (selectedDay === null && selectedMonth === null && selectedYear === null) {
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-day', currentDay.textContent);
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-month', currentMonth.textContent);
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-year', currentYear.textContent);
-                    } else {
+                    }
+                    // Otherwise Set Attributes Of 'datePickerHolderOfClickedBtn' To Selected Dates
+                    else {
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-day', selectedDay.textContent);
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-month', selectedMonth.textContent);
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-year', selectedYear.textContent);
@@ -918,68 +972,89 @@ window.addEventListener('load', () => {
                 })
             })
 
+            // For Each Month Select Button ...
             mtMonthSelectBtn.forEach(btn => {
+                // Adding Event Listener Of Click To Each Button
                 btn.addEventListener('click', () => {
+                    // Variables
                     const mtDatePickerDayMain = btn.parentElement.parentElement;
                     const mtDatePickerMonthMain = mtDatePickerDayMain.parentElement.querySelector('.mt-date-picker-month-main');
 
-
+                    // Adding Class Of 'mt-date-picker-main-showing' To 'mtDatePickerMonthMain' And Removing It From 'mtDatePickerDayMain' Variable
                     mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
                     mtDatePickerDayMain.classList.remove('mt-date-picker-main-showing')
                 })
             })
 
+            // For Each Year Select Button ...
             mtYearSelectBtn.forEach(btn => {
+                // Adding Event Listener Of Click To Each Button
                 btn.addEventListener('click', () =>  {
+                    // Variables
                     const mtDatePickerMonthMain = btn.parentElement.parentElement;
                     const mtDatePickerYearMain = mtDatePickerMonthMain.parentElement.querySelector('.mt-date-picker-year-main');
 
+                    // Adding Class Of 'mt-date-picker-main-showing' To 'mtDatePickerYearMain' And Removing It From 'mtDatePickerMonthMain' Variable
                     mtDatePickerYearMain.classList.add('mt-date-picker-main-showing')
                     mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
                 })
             })
 
+            // For Each Next Month Button ...
             mtDatePickerNextMonthBtn.forEach(btn => {
+                // Adding Event Listener Of Click To Each Button
                 btn.addEventListener('click', () => {
+                    // Variables
                     const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
                     const nextMonth = mtDatePickerDayMonthMainActive.nextElementSibling;
                     const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
-                    const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
-                    const dayItemsInNextMonth = nextMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
 
+                    // If There Wasnt Next Month Then
                     if (nextMonth !== null) {
+                        // Add Class Of 'mt-date-picker-day-month-main-active' To Next Month And Removing It From 'mtDatePickerDayMonthMainActive'
                         nextMonth.classList.add('mt-date-picker-day-month-main-active');
                         mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
 
+                        // If 'activeDayItemInCurrentMonth' Equals To Null Then Remove Class Of 'mt-date-picker-selected' From 'activeDayItemInCurrentMonth'
                         if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
                     }
                 })
             })
 
+            // For Each Prev Month Button ...
             mtDatePickerPrevMonthBtn.forEach(btn => {
+                // Adding Event Listener Of Click To Each Button
                 btn.addEventListener('click', () => {
+                    // Variables
                     const mtDatePickerDayMonthMainActive = btn.parentElement.parentElement.parentElement.querySelector('.mt-date-picker-day-month-main-active');
                     const prevMonth = mtDatePickerDayMonthMainActive.previousElementSibling;
                     const activeDayItemInCurrentMonth = mtDatePickerDayMonthMainActive.querySelector('.mt-date-picker-day-item.mt-date-picker-selected')
-                    const dayItemsInActiveMonth = mtDatePickerDayMonthMainActive.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
-                    const dayItemsInPrevMonth = prevMonth.querySelectorAll('.mt-date-picker-day-item:not(.mt-date-picker-text-secondary, .mt-date-picker-today)');
 
+                    // If There Wasnt Previus Month Then
                     if (prevMonth !== null) {
+                        // Add Class Of 'mt-date-picker-day-month-main-active' To Prev Month And Removing It From 'mtDatePickerDayMonthMainActive'
                         prevMonth.classList.add('mt-date-picker-day-month-main-active');
                         mtDatePickerDayMonthMainActive.classList.remove('mt-date-picker-day-month-main-active');
 
+                        // If 'activeDayItemInCurrentMonth' Equals To Null Then Remove Class Of 'mt-date-picker-selected' From 'activeDayItemInCurrentMonth'
                         if (activeDayItemInCurrentMonth !== null) {activeDayItemInCurrentMonth.classList.remove('mt-date-picker-selected')}
                     }
                 })
             })
 
+            // For Each Month Button ...
             mtDatePickerMonthItem.forEach(item => {
+                // Adding event Listener Of Click To Each Item ..
                 item.addEventListener('click', () => {
+                    // Variables
                     const mtDatePickerMonthMain = item.parentElement.parentElement;
                     const mtDatePickerDayMain = mtDatePickerMonthMain.previousElementSibling
                     const selectedDateMonth = item.parentElement.querySelector('.mt-date-picker-month-item-selected');
 
+                    // If Selected Date Was Equal To Null Then Remove Class Of 'mt-date-picker-month-item-selected' From 'selectedDateMonth'
                     if (selectedDateMonth !== null) {selectedDateMonth.classList.remove('mt-date-picker-month-item-selected')}
+
+                    // Adding Classes To And From Items
                     item.classList.add('mt-date-picker-month-item-selected');
                     mtDatePickerMonthMain.classList.remove('mt-date-picker-main-showing')
                     mtDatePickerDayMain.classList.add('mt-date-picker-main-showing')
@@ -987,40 +1062,53 @@ window.addEventListener('load', () => {
                 })
             })
 
+            // For Each Year Button ...
             mtDatePickerYearItem.forEach(item => {
+                // Adding event Listner Of Click To Item
                 item.addEventListener('click', () => {
+                    // Variables
                     const mtDatePickerYearMain = item.parentElement.parentElement.parentElement;
                     const mtDatePickerMonthMain = mtDatePickerYearMain.previousElementSibling
                     const selectedDateYear = item.parentElement.querySelector('.mt-date-picker-year-item-selected');
 
-                    console.log(mtDatePickerYearMain)
-
+                    // If Selected Date Was Equal To Null Then Remove Class Of 'mt-date-picker-year-item-selected' From 'selectedDateYear'
                     if (selectedDateYear !== null) {selectedDateYear.classList.remove('mt-date-picker-year-item-selected')}
+
+                    // Adding Classes To And From Items
                     item.classList.add('mt-date-picker-year-item-selected');
                     mtDatePickerYearMain.classList.remove('mt-date-picker-main-showing')
                     mtDatePickerMonthMain.classList.add('mt-date-picker-main-showing')
                 })
             })
-
+            
+            // For Each Prev Month Grid Button ...
             mtDatePickerPrevGridBtn.forEach(btn => {
+                // Adding Event Listener Of Click To Button ...
                 btn.addEventListener('click', () => {
+                    // Variables
                     const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
                     const prevGrid = activeGrid.previousElementSibling;
 
-
+                    // If There Wasnt No Prev Grid Item ..
                     if (prevGrid !== null) {
+                        // Adding Class Of 'mt-date-picker-year-main-side-grid-shown' To 'prevGrid' And Remove It From 'activeGrid'
                         prevGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
                         activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
                     }
                 })
             })
 
+            // For Each Next Month Grid Button ...
             mtDatePickerNextGridBtn.forEach(btn => {
+                // Adding Event Listener Of Click To Button ...
                 btn.addEventListener('click', () => {
+                    // Variables
                     const activeGrid = btn.parentElement.nextElementSibling.querySelector('.mt-date-picker-year-main-side-grid-shown');
                     const nextGrid = activeGrid.nextElementSibling;
 
+                    // If There Wasnt No Next Grid Item ..
                     if (nextGrid !== null) {
+                        // Adding Class Of 'mt-date-picker-year-main-side-grid-shown' To 'nextGrid' And Remove It From 'activeGrid'
                         nextGrid.classList.add('mt-date-picker-year-main-side-grid-shown')
                         activeGrid.classList.remove('mt-date-picker-year-main-side-grid-shown')
                     }
