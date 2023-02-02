@@ -12,7 +12,7 @@ git clone https://github.com/MohamadMahdi-Tasha/datePicker.git
 ## Usage
 Firstly You Got To Import Files. You Got 2 Options :
 
-1) Import Orginal Files br
+1) Import Orginal Files
 
 2) Import Minified Files
 
@@ -45,6 +45,39 @@ datePicker.addEventListener('mtDatePickerDateSelected', () => {
     console.log('event')
 })
 ```
+
+# Custom Attributes
+There Is Two Custom Attributes Yet :
+1) style-variables : For Setting Variables To Use In Styles In If One Of Them Goes Wrong You'll Get An Error (Both, Visually And In Consol)
+2) date-picker-position : For Setting Position Of Date PickerWhich
+
+# Recap
+### style-variables:
+
+| Variable                           | Value                                                     |
+|------------------------------------|-----------------------------------------------------------|
+| --mt-date-picker-primary           | Hex Color Like: #fff                                      |
+| --mt-date-picker-darker-primary    | Hex Color Like: #fff                                      |
+| --mt-date-picker-secondary         | Hex Color Like: #fff                                      |
+| --mt-date-picker-darker-secondary  | Hex Color Like: #fff                                      |
+| --mt-date-picker-shadow            | shadow-box value Like: 0,0,30px, #fff                     |
+| --mt-date-picker-font-family       | font-family Value Like: sans-serif, serif, ... !important |
+
+Note: Note That !Important In  '--mt-date-picker-font-family' Is Very Important Because It Overrides Font Family Of Bootstrap
+Note: Another Note Is All Of These Variables Should Be Together Otherwise You'll Get An Error
+
+### Variables:
+| Name                 | About It                            | Value                           |
+|----------------------|-------------------------------------|---------------------------------|
+| style-variables      | Contains Variables Of Styles To Use | The Table Above  (All Together) |
+| date-picker-position | Position Of Date Picker             | center,left,right (Only One)    |
+
+Note: Note That The Attributes Above Are Optional But If You Use Them Their Value Should Be Complete
+
+### Events: 
+| Event                     | About It                         |
+|---------------------------|----------------------------------|
+| mtDatePickerDateSelected  | Triggered When User Apples Date  |
 
 ## Contributing
 
