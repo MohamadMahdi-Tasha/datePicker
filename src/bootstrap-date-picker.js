@@ -782,6 +782,7 @@ const mtDatePickerMonthItem = document.querySelectorAll('.mt-date-picker-month-i
 const mtDatePickerYearItem = document.querySelectorAll('.mt-date-picker-year-item');
 const mtDatePickerPrevGridBtn = document.querySelectorAll('.mt-date-picker-prev-grid-btn');
 const mtDatePickerNextGridBtn = document.querySelectorAll('.mt-date-picker-next-grid-btn');
+const everyButtonInDatePicker = document.querySelectorAll('.mt-date-picker button');
 
 window.addEventListener('load', () => {
     const mtDatePickerCustomElements = document.querySelectorAll('mt-date-picker');
@@ -804,6 +805,8 @@ window.addEventListener('load', () => {
             holderOfDatePickerInElement.firstElementChild.classList.add('mt-date-picker-errored')
             throw new Error('The Styles Are Not Complete. Please Add Styles To Custom Element In Html File');
         } else {
+            everyButtonInDatePicker.forEach(btn => btn.setAttribute('tabindex', '-1'));
+
             window.addEventListener('keydown', (event) => {
                 const pressedKey = event.key.toLowerCase();
                 const allOpenedDatePickers = document.querySelectorAll('.mt-date-picker-holder[data-opened]');
