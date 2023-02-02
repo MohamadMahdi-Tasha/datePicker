@@ -37,6 +37,15 @@ OR
 The Second Example Above Will Create Date Picker With Custom Styles And Position
 But The First One Is Custom 
 
+# Events
+We Have One Event Yet And That's Fired When Date Is Applied ('mtDatePickerDateSelected').
+
+```javascript
+datePicker.addEventListener('mtDatePickerDateSelected', () => {
+    console.log('event')
+})
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
