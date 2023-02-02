@@ -42,11 +42,15 @@ button.border-0.mt-date-picker-bg-primary,
 .mt-date-picker-day-month-main-holder > .mt-date-picker-day-main-side-grid {top: 0;}
 .mt-date-picker-top-middle-holder > .mt-date-picker-main:not(.mt-date-picker-main-showing) {top: 100%;}
 .mt-date-picker-top-middle-holder > .mt-date-picker-main.mt-date-picker-main-showing {top: 0;}
-.mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid {top: 0;}
+.mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid {top: 0;width: calc(318px - 2rem);}
 .mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid.mt-date-picker-year-main-side-grid-shown {left: 0;}
 .mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid:not(.mt-date-picker-year-main-side-grid-shown) {left: 100%;}
 .mt-date-picker-holder {position: relative;}
 .mt-date-picker-apply-btn, .mt-date-picker-cancel-btn {width: 50%;}
+.mt-date-picker-year-item, .mt-date-picker-month-item, .mt-date-picker-day-item {border: 1px solid transparent;}
+.mt-date-picker-today.mt-date-picker-selected,
+.mt-date-picker-month-item-current.mt-date-picker-month-item-selected,
+.mt-date-picker-year-item-current.mt-date-picker-year-item-selected{border-color: var(--mt-date-picker-darker-primary);color: var(--mt-date-picker-darker-primary);}
 
 .mt-date-picker-year-main-side-grid-holder > .mt-date-picker-year-main-side-grid {
     transition-property: all;
