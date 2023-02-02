@@ -954,6 +954,7 @@ window.addEventListener('load', () => {
                     const currentDay = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-day-item.mt-date-picker-today');
                     const currentMonth = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-month-item.mt-date-picker-month-item-current');
                     const currentYear = datePickerHolderOfClickedBtn.querySelector('.mt-date-picker-year-item.mt-date-picker-year-item-current');
+                    const eventOfApplyed = new Event('mtDatePickerDateSelected');
 
                     // Closing Date Picker
                     datePickerHolderOfClickedBtn.removeAttribute('data-opened');
@@ -970,6 +971,9 @@ window.addEventListener('load', () => {
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-month', selectedMonth.textContent);
                         datePickerHolderOfClickedBtn.setAttribute('data-selected-year', selectedYear.textContent);
                     }
+
+                    // Dispatching Custom Event
+                    datePickerHolderOfClickedBtn.parentElement.dispatchEvent(eventOfApplyed);
                 })
             })
 
