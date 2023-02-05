@@ -7,7 +7,7 @@ class MTDatePicker extends HTMLElement {
             <!--Date Picker Holder-->
                 <div style="${(this.getAttribute('style-variables') === null) ? '--mt-date-picker-primary: #3069fe;--mt-date-picker-darker-primary: #2554ce;--mt-date-picker-secondary: #e6e6e6;--mt-date-picker-darker-secondary: #868686;--mt-date-picker-shadow: 0 5px 10px rgba(0,0,0,.08);--mt-date-picker-font-family:serif !important' : this.getAttribute('style-variables')}" role="date-picker-holder" class="mt-date-picker-holder" data-selected-day="unset" data-selected-month="unset" data-selected-year="unset">
                     <!--Date Picker Toggler-->
-                    <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">Click Me To Show Date Picker!</button>
+                    <button role="date-picker-toggler" class="mt-date-picker-toggler mt-date-picker-fs-16px px-3 py-2 rounded-3 mt-date-picker-border-1px-solid-secondary bg-white mt-date-picker-text-darker-secondary">${(this.getAttribute('toggler-text-content') === null) ? 'Click Me To Show Date Picker!' : this.getAttribute('toggler-text-content')}</button>
                     <!--Date Picker-->
                     <div role="date-picker" class="bg-white mt-date-picker ${(this.getAttribute('date-picker-position') === null) ? 'mt-date-picker-center' : `mt-date-picker-${this.getAttribute('date-picker-position')}`} overflow-hidden mt-3 mt-date-picker-border-1px-solid-secondary mt-date-picker-shadow rounded-4 position-absolute p-3">
                         <!--Top And Middle Side Holder-->
