@@ -47,11 +47,20 @@ datePicker.addEventListener('mtDatePickerDateSelected', () => {
 ```
 
 # Custom Attributes
-There Is Two Custom Attributes Yet :
-1) style-variables : For Setting Variables To Use In Styles In If One Of Them Goes Wrong You'll Get An Error (Both, Visually And In Consol)
-2) date-picker-position : For Setting Position Of Date PickerWhich
+There Is Three Custom Attributes Yet :
+1) style-variables : For Setting Variables To Use In Styles In If One Of Them Goes Wrong You'll Get An Error (Both, Visually And In Console)
+2) date-picker-position : For Setting Position Of Date Picker
+3) toggler-text-content : For Setting Text Content Of Date Picker Toggler 
 
 # Recap
+### Attributes:
+
+| Attribute                                  | About It                                                                                                                |
+|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| style-variables                            | For Setting Variables To Use In Styles In If One Of Them Goes Wrong You'll Get An Error (Both, Visually And In Console) |
+| date-picker-position                       | For Setting Position Of Date Picker                                                                                     |
+| toggler-text-content                       | For Setting Text Content Of Date Picker Toggler                                                                         |
+
 ### style-variables:
 
 | Variable                           | Value                                                     |
